@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
@@ -41,18 +42,19 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+
           {
-            loader: 'style-loader',
-          }, {
-            loader: 'css-loader',
-          }, {
-            loader: 'sass-loader',
-          }, {
             loader: 'sass-resources-loader',
             options: {
-              resources: './src/styles/_abstracts.scss',
+              resources: [
+                './src/styles/_abstracts.scss',
+              ],
             },
           },
+
         ],
       },
       {
@@ -85,10 +87,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };
