@@ -1,0 +1,27 @@
+input {
+  width: auto;
+  font-size: 1.8rem;
+  padding: 1.5rem 2rem;
+  color: $white;
+  background: $dark-gray;
+  border: none;
+  border-radius: .5rem;
+  font: inherit;
+
+  &::placeholder {
+    color: $light-gray;
+    opacity: 1;
+  }
+
+  @include respond ('lg') {
+    width: 100%;
+  }
+}
+
+.input-field {
+  &__label {
+    text-transform: uppercase;
+    color: $primary;
+    padding-left: 0;
+  }
+}

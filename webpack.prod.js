@@ -39,17 +39,45 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader',
+          }, {
+            loader: 'css-loader',
+          }, {
+            loader: 'sass-loader',
+          }, {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: './src/styles/_abstracts.scss',
+            },
+          },
+        ],
       },
       {
-        test: /\.(png|j?g|svg|gif)?$/,
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: 'file-loader',
       },
       {
         test: /\.html$/,
         exclude: /node_modules/,
         use: 'html-loader',
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       },
     ],
   },

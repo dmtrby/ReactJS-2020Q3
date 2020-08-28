@@ -1,5 +1,6 @@
 {
   "extends": ["airbnb"],
+  "parser": "babel-eslint",
   "plugins": ["react", "import", "jsx-a11y"],
   "env": {
     "browser": true,
@@ -17,6 +18,8 @@
       "extensions": [".js", ".jsx"]
     }],
     "linebreak-style": 0,
+    "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": true
     }],

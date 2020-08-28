@@ -1,0 +1,20 @@
+h1, .h1 {
+  font-size: 3rem;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: inherit;
+  letter-spacing: .25rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+
+  @include respond ('lg') {
+    font-size: 5rem;
+  }
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 300;
+  color: $white;
+  opacity: .8;
+}

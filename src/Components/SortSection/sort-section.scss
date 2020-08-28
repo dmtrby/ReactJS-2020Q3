@@ -1,0 +1,41 @@
+.sort-section {
+  &__title {
+    text-transform: uppercase;
+    color: $light-gray;
+  }
+
+  &__dropdown {
+    margin-right: 5rem;
+    text-transform: uppercase;
+    min-width: 10rem;
+  }
+}
+
+[data-reach-listbox-arrow] {
+  vertical-align: middle;
+  line-height: 100%;
+  margin-left: 1rem;
+}
+
+[data-reach-listbox-list] {
+  box-shadow: .125rem .125rem .25rem .25rem $black;
+  background: $black;
+  padding: 1rem;
+  border: none;
+  outline: none;
+
+}
+
+[data-reach-listbox-popover] {
+  width: fit-content!important;
+  z-index: 100;
+}
+
+[data-reach-listbox-option] {
+  cursor: pointer;
+  &:hover, &:focus {
+    color: $white;
+    background: $primary;
+  }
+
+}
