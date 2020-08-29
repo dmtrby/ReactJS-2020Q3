@@ -1,0 +1,80 @@
+.movie-card {
+  color: $light-gray;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    .movie-card__img {
+      transform: translateY(-.25rem);
+    }
+
+    .movie-card__menu {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all .3s;
+  }
+
+  &__genre {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  &__year {
+    border: 1px solid $light-gray;
+    padding: .25rem 1.5rem;
+    font-size: 1.4rem;
+    color: $white;
+    border-radius: .5rem;
+    opacity: .8;
+  }
+
+  &__menu {
+    display: flex;
+    visibility: hidden;
+    transition: all .5s linear;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    background: $black;
+    border-radius: 50%;
+    z-index: 6;
+
+    &-item {
+      text-transform: none;
+    }
+  }
+}
+
+[data-reach-menu-list] {
+  position: absolute;
+  min-width: 14rem;
+  top: 5rem;
+  right: 5rem;
+  z-index: 100;
+  background: $black;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+[data-reach-menu-item] {
+  text-transform: none;
+
+  &:hover, &:focus {
+    cursor: pointer;
+    background: $primary;
+  }
+}
