@@ -4,17 +4,16 @@ import Logotype from '../Logotype';
 import Input from '../Base/Input';
 import Button from '../Base/Button';
 import Heading from '../Base/Heading';
-import IconComponent from '../Base/IconComponent';
 import AddMovieComponent from '../AddMovieComponent';
 
-const MainPageHeader = () => (
+const MainPageHeader = ({ ...otherProps }) => (
   <>
     <div className="container margin-bottom-2">
       <div className="header__logo-section row between-xs middle-xs padding-top-2">
         <span className="header__logo">
           <Logotype />
         </span>
-        <AddMovieComponent />
+        <AddMovieComponent {...otherProps} />
       </div>
     </div>
     <div className="container">
@@ -25,7 +24,6 @@ const MainPageHeader = () => (
               <div className="col-xs">
                 <Heading headingLevel={1}>find your movie</Heading>
               </div>
-
               <form className="col-xs search-form margin">
                 <Input type="text" classList="search-form__input" placeHolder="What do you want to watch?" />
                 <Button type="submit" text="search" variant="primary" classList="margin-left-lg-2 margin-top-lg-0 margin-top-xs-1" />

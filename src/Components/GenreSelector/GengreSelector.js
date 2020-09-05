@@ -1,18 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './genre-selector.scss';
 import Button from '../Base/Button';
+import getRandomString from '../../Utils';
 
-const GenreSelector = () => (
+const genres = ['All', 'Drama', 'Comedy', 'Biography', 'Crime'];
+
+const GenreSelector = ({ filterBy, changeFilter }) => (
   <nav className="genre-selector">
     <ul className="genre-selector__list">
-      <li><Button classList="genre-selector__item genre-selector__active" variant="text" text="all" /></li>
-      <li><Button classList="genre-selector__item genre-selector__active" variant="text" text="documentary" /></li>
-      <li><Button classList="genre-selector__item genre-selector__active" variant="text" text="comedy" /></li>
-      <li><Button classList="genre-selector__item genre-selector__active" variant="text" text="horror" /></li>
-      <li><Button classList="genre-selector__item genre-selector__active" variant="text" text="crime" /></li>
+      {genres.map((genre) => (
+        <li key={getRandomString()}>
+          <Button onClick={() => changeFilter(genre)} classList={`genre-selector__item ${genre === filterBy ? 'genre-selector__item--active' : ''}`} variant="text" text={genre} />
+        </li>
+      ))}
     </ul>
   </nav>
 );
+
+GenreSelector.propTypes = {
+  filterBy: PropTypes.string.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+};
 
 export default GenreSelector;

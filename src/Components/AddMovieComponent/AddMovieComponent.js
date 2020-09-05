@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { Dialog, DialogOverlay } from '@reach/dialog';
 import Button from '../Base/Button';
@@ -7,51 +8,34 @@ import ModalWindow from '../ModalWIndow';
 import Heading from '../Base/Heading';
 import AddMovieForm from '../AddMovieForm';
 
-class AddMovieComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
-    };
-  }
+const AddMovieComponent = ({ addMovie, ...otherProps }) => {
+  const [show, setModal] = useState(false);
+  return (
+    <>
+      <Button variant="with-icon" onClick={() => setModal(!show)}>
+        <IconComponent xlinkHref="#icons-sprite_plus" size="small" color="primary" classList="margin-right-1" />
+        add movie
+      </Button>
+      <Dialog
+        className="modal"
+        isOpen={show}
+        onDismiss={() => setModal(!show)}
+        aria-label="add movie modal window"
+      >
+        <ModalWindow isOpen={show} handleHide={() => setModal(!show)}>
+          <Heading headingLevel={2} classList="h1">add movie</Heading>
+          <AddMovieForm hideModal={() => setModal(!show)} onSubmit={addMovie} {...otherProps} />
+        </ModalWindow>
+        <DialogOverlay className="modal__overlay" onDismiss={() => setModal(!show)} />
 
-  showModal = () => {
-    this.setState({
-      show: true,
-    });
-  }
+      </Dialog>
+    </>
 
-  hideModal = () => {
-    this.setState({
-      show: false,
-    });
-  }
+  );
+};
 
-  render() {
-    const { show } = this.state;
-    return (
-      <>
-        <Button variant="with-icon" onClick={this.showModal}>
-          <IconComponent xlinkHref="#icons-sprite_plus" size="small" color="primary" classList="margin-right-1" />
-          add movie
-        </Button>
-        <Dialog
-          className="modal"
-          isOpen={show}
-          onDismiss={this.hideModal}
-          aria-label="add movie modal window"
-        >
-          <ModalWindow isOpen={show} handleHide={this.hideModal}>
-            <Heading headingLevel={2} classList="h1">add movie</Heading>
-            <AddMovieForm />
-          </ModalWindow>
-          <DialogOverlay className="modal__overlay" onDismiss={this.hideModal} />
-
-        </Dialog>
-      </>
-
-    );
-  }
-}
+AddMovieComponent.propTypes = {
+  addMovie: PropTypes.func.isRequired,
+};
 
 export default AddMovieComponent;

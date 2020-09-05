@@ -58,7 +58,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   classList: PropTypes.string,
   text: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit']),
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
   children: PropTypes.node,
   variant: PropTypes.oneOf(['primary', 'with-icon', 'text', 'secondary']),
 };
