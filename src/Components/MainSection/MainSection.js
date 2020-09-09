@@ -39,18 +39,6 @@ const MainSection = ({ movies, ...otherProps }) => {
     [filterStatus, movies],
   );
 
-  // const sortArray = (array, sortValue) => {
-  //   if (sortValue === 'name') {
-  //     return array.sort((a, b) => a.name.localeCompare(b.name));
-  //   }
-  //   return array.sort((a, b) => a[sortValue] - b[sortValue]);
-  // };
-
-  // const filteredMovies = movies.filter(
-  //   (v) => v.genres.indexOf(filterStatus.filterBy) !== -1 || filterStatus.filterBy === 'All',
-  // );
-  // const sortMovies = setMoviesData(sortArray());
-
   return (
     <main className="main">
       <div className="container">

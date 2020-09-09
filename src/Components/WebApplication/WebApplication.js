@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import HeaderSection from '../HeaderSection';
 import MainSection from '../MainSection';
@@ -12,8 +12,13 @@ const WebApplication = () => {
 
   const [moviesData, setMoviesData] = useFetchedMovies();
 
+  const [filterString, setFilterString] = useState('');
+
   const searchMovies = (stringValue) => {
-    setMoviesData([...moviesData.filter((v) => v.name.toLowerCase().includes(stringValue.toLowerCase()))]);
+    setFilterString(stringValue);
+    // setFilteredMoviesData([
+    //   ...filteredMoviesData.filter((v) => v.name.toLowerCase().includes(stringValue.toLowerCase())),
+    // ]);
   };
 
   const addMovie = (newMovie) => {
@@ -50,15 +55,20 @@ const WebApplication = () => {
     });
   };
 
+  const filteredData = useMemo(
+    () => (moviesData ? moviesData.filter((v) => v.name.toLowerCase().includes(filterString.toLowerCase())) : null),
+    [filterString, moviesData],
+  );
+
   return (
     <>
       <HeaderSection {...appStatus} setMainPage={setMainPage} addMovie={addMovie} searchMovies={searchMovies} />
-      {moviesData ? (
+      {filteredData ? (
         <MainSection
           setDetailsPage={setDetailsPage}
           editMovie={editMovie}
           removeMovie={removeMovie}
-          movies={moviesData}
+          movies={filteredData}
         />
       ) : (
         'loading'

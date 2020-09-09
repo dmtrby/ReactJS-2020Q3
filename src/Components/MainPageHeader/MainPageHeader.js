@@ -13,7 +13,6 @@ const MainPageHeader = ({ searchMovies, ...otherProps }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     searchMovies(searchValue);
-    setSearchValue('');
   };
 
   return (
