@@ -16,9 +16,6 @@ const WebApplication = () => {
 
   const searchMovies = (stringValue) => {
     setFilterString(stringValue);
-    // setFilteredMoviesData([
-    //   ...filteredMoviesData.filter((v) => v.name.toLowerCase().includes(stringValue.toLowerCase())),
-    // ]);
   };
 
   const addMovie = (newMovie) => {
