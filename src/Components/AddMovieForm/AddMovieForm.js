@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import './movie-form.scss';
 import Input from '../Base/Input';
 import Button from '../Base/Button';
 
-const AddMovieForm = ({
-  name, year, url, genres, description, duration, id, onSubmit, hideModal,
-}) => {
+import './movie-form.scss';
+
+const AddMovieForm = ({ name, year, url, genres, description, duration, id, onSubmit, hideModal }) => {
   const [form, setForm] = useState({
     id,
     name,
@@ -64,27 +63,86 @@ const AddMovieForm = ({
           </div>
         )}
         <div className="col-xs-12">
-          <Input type="text" value={form.name} onChange={handleInputChange} labelText="Title" id="name" name="name" placeHolder="Select title" />
+          <Input
+            type="text"
+            value={form.name}
+            onChange={handleInputChange}
+            labelText="Title"
+            id="name"
+            name="name"
+            placeHolder="Select title"
+          />
         </div>
         <div className="col-xs-12">
-          <Input type="text" value={form.year} onChange={handleInputChange} labelText="Release date" id="year" name="year" placeHolder="Select date (year)" />
+          <Input
+            type="text"
+            value={form.year}
+            onChange={handleInputChange}
+            labelText="Release date"
+            id="year"
+            name="year"
+            placeHolder="Select date (year)"
+          />
         </div>
         <div className="col-xs-12">
-          <Input type="text" value={form.url} onChange={handleInputChange} labelText="Movie url" id="url" name="url" placeHolder="Movie URL here" />
+          <Input
+            type="text"
+            value={form.url}
+            onChange={handleInputChange}
+            labelText="Movie url"
+            id="url"
+            name="url"
+            placeHolder="Movie URL here"
+          />
         </div>
         <div className="col-xs-12">
-          <Input type="text" value={genresString} onChange={handleInputChange} labelText="Genres" id="genres" name="genres" placeHolder="Select Genres" />
+          <Input
+            type="text"
+            value={genresString}
+            onChange={handleInputChange}
+            labelText="Genres"
+            id="genres"
+            name="genres"
+            placeHolder="Select Genres"
+          />
         </div>
         <div className="col-xs-12">
-          <Input type="text" value={form.description} onChange={handleInputChange} labelText="Description" id="description" name="description" placeHolder="Description here" />
+          <Input
+            type="text"
+            value={form.description}
+            onChange={handleInputChange}
+            labelText="Description"
+            id="description"
+            name="description"
+            placeHolder="Description here"
+          />
         </div>
         <div className="col-xs-12">
-          <Input type="text" value={form.duration} onChange={handleInputChange} labelText="Duration" id="duration" name="duration" placeHolder="Duration here" />
+          <Input
+            type="text"
+            value={form.duration}
+            onChange={handleInputChange}
+            labelText="Duration"
+            id="duration"
+            name="duration"
+            placeHolder="Duration here"
+          />
         </div>
         <div className="col-xs-12 margin-top-4">
           <div className="row end-xs">
-            <Button type="reset" onClick={resetForm} text="reset" variant="secondary" classList="margin-left-lg-2 margin-top-lg-0 margin-top-xs-1" />
-            <Button type="submit" text="submit" variant="primary" classList="margin-left-lg-2 margin-top-lg-0 margin-top-xs-1" />
+            <Button
+              type="reset"
+              onClick={resetForm}
+              text="reset"
+              variant="secondary"
+              classList="margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+            />
+            <Button
+              type="submit"
+              text="submit"
+              variant="primary"
+              classList="margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+            />
           </div>
         </div>
       </div>

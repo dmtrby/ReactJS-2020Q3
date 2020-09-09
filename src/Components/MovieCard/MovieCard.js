@@ -2,20 +2,20 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {
   Menu,
   MenuList,
   MenuButton,
 } from '@reach/menu-button';
 
-import './movie-card.scss';
-import getRandomString from '../../Utils';
-import movieImg from '../../images/pulp-fiction.png';
 import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
 import EditMovieComponent from '../EditMovieComponent';
 import RemoveMovieComponent from '../RemoveMovieComponent';
+import getRandomString from '../../Utils';
+
+import movieImg from '../../images/pulp-fiction.png';
+import './movie-card.scss';
 
 const drawGenres = (genres) => genres.map((genre, i) => (
   <span className="movie-card__genre" key={getRandomString()}>

@@ -5,20 +5,19 @@ import Logotype from '../Logotype';
 import Button from '../Base/Button';
 import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
+
 import movieImg from '../../images/pulp-fiction.png';
 import './details-page-header.scss';
-import getRandomString from '../../Utils';
 
-const drawGenres = (genres) => genres.map((genre, i) => (
-  <span className="details-page__genre" key={getRandomString()}>
-    {genre}
-    {i === genres.length - 1 ? '' : ', '}
-  </span>
-));
+const drawGenres = (genres) =>
+  genres.map((genre, i) => (
+    <span className="details-page__genre" key={genre}>
+      {genre}
+      {i === genres.length - 1 ? '' : ', '}
+    </span>
+  ));
 
-const DetailsPageHeader = ({
-  name, year, genres, rating, description, duration, setMainPage,
-}) => (
+const DetailsPageHeader = ({ name, year, genres, rating, description, duration, setMainPage }) => (
   <>
     <div className="container margin-bottom-2">
       <div className="header__logo-section row between-xs middle-xs padding-top-2">
@@ -39,7 +38,9 @@ const DetailsPageHeader = ({
           <div className="row">
             <div className="col">
               <div className="row">
-                <Heading headingLevel={1} classList="details-page__header">{name}</Heading>
+                <Heading headingLevel={1} classList="details-page__header">
+                  {name}
+                </Heading>
                 <div className="details-page__rating margin-left-3">
                   <span className="details-page__rating-value">{rating}</span>
                 </div>
@@ -47,32 +48,23 @@ const DetailsPageHeader = ({
             </div>
           </div>
           <div className="row">
-            <div className="col">
-              {drawGenres(genres)}
-            </div>
+            <div className="col">{drawGenres(genres)}</div>
           </div>
           <div className="row">
             <div className="col">
               <div className="row">
-                <span className="details-page__year margin-right-4">
-                  {year}
-                </span>
-                <span className="details-page__time">
-                  {duration}
-                </span>
+                <span className="details-page__year margin-right-4">{year}</span>
+                <span className="details-page__time">{duration}</span>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-12 details-page__description">
-              {description}
-            </div>
+            <div className="col-xs-12 details-page__description">{description}</div>
           </div>
         </div>
       </div>
     </div>
   </>
-
 );
 
 DetailsPageHeader.propTypes = {

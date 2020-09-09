@@ -4,7 +4,7 @@
   width: 100%;
   height: fit-content;
   max-height: 90%;
-  overflow-y: scroll;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -35,8 +35,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #000;
-    opacity: 0.5;
+    background-color: rgba($black, .7);
   }
 
   &__content {

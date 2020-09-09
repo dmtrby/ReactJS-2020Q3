@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './movies-container.scss';
 import MovieCard from '../MovieCard';
+
+import './movies-container.scss';
 
 const MoviesContainer = ({ movies, ...otherProps }) => (
   <div className="container">
@@ -16,7 +17,11 @@ const MoviesContainer = ({ movies, ...otherProps }) => (
       </div>
       <div className="col-xs-12 col-no-gutter margin-bottom-6">
         <div className="row">
-          {movies.map((film) => <div className="col-xs-12 col-md-6 col-lg-6 col-xl-4 col-no-gutter-lr" key={film.id}><MovieCard {...film} {...otherProps} /></div>)}
+          {movies.map((film) => (
+            <div className="col-xs-12 col-md-6 col-lg-6 col-xl-4 col-no-gutter-lr" key={film.id}>
+              <MovieCard {...film} {...otherProps} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

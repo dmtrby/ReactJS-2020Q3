@@ -14,15 +14,35 @@
     }
   },
   "rules": {
-    "react/jsx-filename-extension": [1, {
-      "extensions": [".js", ".jsx"]
-    }],
+    "implicit-arrow-linebreak": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
     "linebreak-style": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn"]
+      }
+    ],
+    "object-curly-newline": "off",
     "react/button-has-type": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": true
-    }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "global-require": 0
   }
 }

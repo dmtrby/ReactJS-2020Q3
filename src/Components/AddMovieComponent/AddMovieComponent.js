@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Dialog, DialogOverlay } from '@reach/dialog';
 import Button from '../Base/Button';
 import IconComponent from '../Base/IconComponent';
 import ModalWindow from '../ModalWIndow';
@@ -16,21 +15,13 @@ const AddMovieComponent = ({ addMovie, ...otherProps }) => {
         <IconComponent xlinkHref="#icons-sprite_plus" size="small" color="primary" classList="margin-right-1" />
         add movie
       </Button>
-      <Dialog
-        className="modal"
-        isOpen={show}
-        onDismiss={() => setModal(!show)}
-        aria-label="add movie modal window"
-      >
-        <ModalWindow isOpen={show} handleHide={() => setModal(!show)}>
-          <Heading headingLevel={2} classList="h1">add movie</Heading>
-          <AddMovieForm hideModal={() => setModal(!show)} onSubmit={addMovie} {...otherProps} />
-        </ModalWindow>
-        <DialogOverlay className="modal__overlay" onDismiss={() => setModal(!show)} />
-
-      </Dialog>
+      <ModalWindow isOpen={show} handleHide={() => setModal(!show)}>
+        <Heading headingLevel={2} classList="h1">
+          add movie
+        </Heading>
+        <AddMovieForm hideModal={() => setModal(!show)} onSubmit={addMovie} {...otherProps} />
+      </ModalWindow>
     </>
-
   );
 };
 

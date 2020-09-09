@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import HeaderSection from '../HeaderSection';
 import MainSection from '../MainSection';
-
 import useFetchedMovies from '../../Hooks/useFetchedMovies';
 
 const WebApplication = () => {
@@ -13,30 +12,26 @@ const WebApplication = () => {
 
   const [moviesData, setMoviesData] = useFetchedMovies();
 
-  const addMovie = (newMovieData) => {
-    const newMoviesData = [...moviesData];
-    const newMovie = { ...newMovieData };
-    newMovie.rating = '9'; // remove it later
-    newMovie.id = newMoviesData.length + 1;
-    newMoviesData.push(newMovie);
-    setMoviesData(newMoviesData);
+  const searchMovies = (stringValue) => {
+    setMoviesData([...moviesData.filter((v) => v.name.toLowerCase().includes(stringValue.toLowerCase()))]);
+  };
+
+  const addMovie = (newMovie) => {
+    moviesData.push({ ...newMovie, id: moviesData.length + 1, rating: '9' }); // remove rating later ( and id maybe)
+    setMoviesData([...moviesData]);
   };
 
   const editMovie = (newMovieData) => {
-    const newMovie = { ...newMovieData };
-    const newMoviesData = [...moviesData];
-    newMoviesData.forEach((v, i) => {
-      if (v.id === newMovie.id) {
-        newMovie.rating = newMoviesData[i].rating; // remove it later
-        newMoviesData[i] = newMovie;
+    moviesData.forEach((v, i) => {
+      if (v.id === newMovieData.id) {
+        moviesData[i] = { ...newMovieData, rating: moviesData[i].rating };
       }
     });
-    setMoviesData(newMoviesData);
+    setMoviesData([...moviesData]);
   };
 
   const removeMovie = (movie) => {
-    const newArray = moviesData.filter((v) => v.id !== movie.id);
-    setMoviesData(newArray);
+    setMoviesData([...moviesData.filter((v) => v.id !== movie.id)]);
   };
 
   const setDetailsPage = (data) => {
@@ -57,11 +52,7 @@ const WebApplication = () => {
 
   return (
     <>
-      <HeaderSection
-        {...appStatus}
-        setMainPage={setMainPage}
-        addMovie={addMovie}
-      />
+      <HeaderSection {...appStatus} setMainPage={setMainPage} addMovie={addMovie} searchMovies={searchMovies} />
       {moviesData ? (
         <MainSection
           setDetailsPage={setDetailsPage}
@@ -72,7 +63,6 @@ const WebApplication = () => {
       ) : (
         'loading'
       )}
-
     </>
   );
 };

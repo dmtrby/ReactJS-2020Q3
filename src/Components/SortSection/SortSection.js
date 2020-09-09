@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {
   Listbox,
   ListboxOption,
 } from '@reach/listbox';
 
 import IconComponent from '../Base/IconComponent';
+
 import './sort-section.scss';
-import getRandomString from '../../Utils';
 
 const mockedSortSectionData = [
   {
@@ -41,7 +40,7 @@ const SortSection = ({ sortBy, onSortChange }) => (
       >
         {mockedSortSectionData.map((sort) => (
           <ListboxOption
-            key={getRandomString()}
+            key={sort.name}
             value={sort.name}
           >
             {sort.render}

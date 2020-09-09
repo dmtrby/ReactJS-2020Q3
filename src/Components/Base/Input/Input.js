@@ -3,16 +3,34 @@ import PropTypes from 'prop-types';
 
 import './input.scss';
 
-const Input = ({
-  type, placeHolder, labelText, classList, name, id, onChange, value, disabled,
-}) => (labelText
-  ? (
+const Input = ({ type, placeHolder, labelText, classList, name, id, onChange, value, disabled }) =>
+  (labelText ? (
     <div className="input-field row">
-      <label className="input-field__label col-xs-12" htmlFor={id}>{labelText}</label>
-      <input className={`input-field__label__input col-xs-12 ${classList}`} type={type} placeholder={placeHolder} id={id} name={name} onChange={onChange} value={value} disabled={disabled} />
+      <label className="input-field__label col-xs-12" htmlFor={id}>
+        {labelText}
+      </label>
+      <input
+        className={`input-field__label__input col-xs-12 ${classList}`}
+        type={type}
+        placeholder={placeHolder}
+        id={id}
+        name={name}
+        onChange={onChange}
+        value={value}
+        disabled={disabled}
+      />
     </div>
-  )
-  : <input className={classList} type={type} placeholder={placeHolder} id={id} name={name} />);
+  ) : (
+    <input
+      className={classList}
+      value={value}
+      onChange={onChange}
+      type={type}
+      placeholder={placeHolder}
+      id={id}
+      name={name}
+    />
+  ));
 
 Input.propTypes = {
   type: PropTypes.string.isRequired,

@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-
-import './main-section.scss';
 
 import GenreSelector from '../GenreSelector';
 import MoviesContainer from '../MoviesContainer';
 import SortSection from '../SortSection';
+
+import './main-section.scss';
 
 const MainSection = ({ movies, ...otherProps }) => {
   const [filterStatus, setFilter] = useState({
@@ -27,15 +27,29 @@ const MainSection = ({ movies, ...otherProps }) => {
     });
   });
 
-  const sortArray = (array, sortValue) => {
-    if (sortValue === 'name') {
-      return array.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    return array.sort((a, b) => a[sortValue] - b[sortValue]);
-  };
+  const sortMovies = useMemo(
+    () => {
+      const { sortBy, filterBy } = filterStatus;
+      const filteredMovies = movies.filter((v) => v.genres.indexOf(filterBy) !== -1 || filterBy === 'All');
+      if (sortBy === 'name') {
+        return filteredMovies.sort((a, b) => a.name.localeCompare(b.name));
+      }
+      return filteredMovies.sort((a, b) => a[sortBy] - b[sortBy]);
+    },
+    [filterStatus, movies],
+  );
 
-  const filteredMovies = movies.filter((v) => v.genres.indexOf(filterStatus.filterBy) !== -1 || filterStatus.filterBy === 'All');
-  const sortMovies = sortArray(filteredMovies, filterStatus.sortBy);
+  // const sortArray = (array, sortValue) => {
+  //   if (sortValue === 'name') {
+  //     return array.sort((a, b) => a.name.localeCompare(b.name));
+  //   }
+  //   return array.sort((a, b) => a[sortValue] - b[sortValue]);
+  // };
+
+  // const filteredMovies = movies.filter(
+  //   (v) => v.genres.indexOf(filterStatus.filterBy) !== -1 || filterStatus.filterBy === 'All',
+  // );
+  // const sortMovies = setMoviesData(sortArray());
 
   return (
     <main className="main">
