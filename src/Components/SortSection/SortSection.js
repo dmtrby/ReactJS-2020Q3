@@ -1,60 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {
   Listbox,
   ListboxOption,
 } from '@reach/listbox';
 
 import IconComponent from '../Base/IconComponent';
+
 import './sort-section.scss';
-import getRandomString from '../../Utils';
 
-class SortSection extends React.Component {
-  constructor(props) {
-    super(props);
-    const { sorts } = this.props;
-    this.state = {
-      sortArray: sorts,
-      value: sorts[0],
-    };
-  }
+const mockedSortSectionData = [
+  {
+    name: 'name',
+    render: 'Title',
+  },
+  {
+    name: 'year',
+    render: 'Release date',
+  },
+  {
+    name: 'duration',
+    render: 'Duration',
+  },
+  {
+    name: 'rating',
+    render: 'Rating',
+  },
+];
 
-  handleChange = (newValue) => {
-    this.setState({
-      value: newValue,
-    });
-  };
-
-  render() {
-    const { sortArray, value } = this.state;
-    return (
-      <div className="container">
-        <div className="row end-xs">
-          <span className="sort-section__title">sort by</span>
-          <Listbox
-            defaultValue={value.name}
-            className="sort-section__dropdown margin-left-2"
-            arrow={<IconComponent xlinkHref="#icons-sprite_down-arrow" color="primary" />}
-            onChange={this.handleChange}
+const SortSection = ({ sortBy, onSortChange }) => (
+  <div className="container">
+    <div className="row end-xs">
+      <span className="sort-section__title">sort by</span>
+      <Listbox
+        defaultValue={sortBy}
+        className="sort-section__dropdown margin-left-2"
+        arrow={<IconComponent xlinkHref="#icons-sprite_down-arrow" color="primary" />}
+        onChange={onSortChange}
+      >
+        {mockedSortSectionData.map((sort) => (
+          <ListboxOption
+            key={sort.name}
+            value={sort.name}
           >
-            {sortArray.map((sort) => (
-              <ListboxOption
-                key={getRandomString()}
-                value={sort.name}
-              >
-                {sort.render}
-              </ListboxOption>
-            ))}
-          </Listbox>
-        </div>
-      </div>
-    );
-  }
-}
+            {sort.render}
+          </ListboxOption>
+        ))}
+      </Listbox>
+    </div>
+  </div>
+);
 
 SortSection.propTypes = {
-  sorts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sortBy: PropTypes.string.isRequired,
+  onSortChange: PropTypes.func.isRequired,
 };
 
 export default SortSection;

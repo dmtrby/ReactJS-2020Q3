@@ -1,119 +1,64 @@
-import React from 'react';
-
-import './main-section.scss';
+import React, { useState, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 import GenreSelector from '../GenreSelector';
 import MoviesContainer from '../MoviesContainer';
 import SortSection from '../SortSection';
 
-const mockedMoviesData = [
-  {
-    id: '1',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-  {
-    id: '2',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-  {
-    id: '3',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-  {
-    id: '4',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-  {
-    id: '5',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-  {
-    id: '6',
-    name: 'Pulp Fiction',
-    genres: [
-      'Drama', 'Biography', 'Music',
-    ],
-    year: '2004',
-    image: 'pulp-fiction.png',
-    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles.',
-    duration: '154',
-    rating: '4.3',
-  },
-];
+import './main-section.scss';
 
-const mockedSortSectionData = [
-  {
-    name: 'title',
-    render: 'Title',
-  },
-  {
-    name: 'release-date',
-    render: 'Release date',
-  },
-  {
-    name: 'Genre',
-    render: 'genre',
-  },
-  {
-    name: 'Overview',
-    render: 'overview',
-  },
-];
+const MainSection = ({ movies, ...otherProps }) => {
+  const [filterStatus, setFilter] = useState({
+    sortBy: 'name',
+    filterBy: 'All',
+  });
 
-const MainSection = () => (
-  <main className="main">
-    <div className="container">
-      <div className="row center-xs between-xl">
-        <div className="col-xs-12 col-md-10 col-lg-6 col-xl-5">
-          <GenreSelector />
-        </div>
-        <div className="col-xs-12 col-md-12 col-lg-6 col-xl-5">
-          <SortSection sorts={mockedSortSectionData} />
+  const changeFilter = useCallback((filter) => {
+    setFilter({
+      ...filterStatus,
+      filterBy: filter,
+    });
+  });
+
+  const onSortChange = useCallback((sortValue) => {
+    setFilter({
+      ...filterStatus,
+      sortBy: sortValue,
+    });
+  });
+
+  const sortMovies = useMemo(
+    () => {
+      const { sortBy, filterBy } = filterStatus;
+      const filteredMovies = movies.filter((v) => v.genres.indexOf(filterBy) !== -1 || filterBy === 'All');
+      if (sortBy === 'name') {
+        return filteredMovies.sort((a, b) => a.name.localeCompare(b.name));
+      }
+      return filteredMovies.sort((a, b) => a[sortBy] - b[sortBy]);
+    },
+    [filterStatus, movies],
+  );
+
+  return (
+    <main className="main">
+      <div className="container">
+        <div className="row center-xs between-xl">
+          <div className="col-xs-12 col-md-10 col-lg-6 col-xl-5">
+            <GenreSelector filterBy={filterStatus.filterBy} changeFilter={changeFilter} />
+          </div>
+          <div className="col-xs-12 col-md-12 col-lg-6 col-xl-5">
+            <SortSection sortBy={filterStatus.sortBy} onSortChange={onSortChange} />
+          </div>
         </div>
       </div>
-    </div>
-    <MoviesContainer movies={mockedMoviesData} />
-  </main>
-);
+      <MoviesContainer movies={sortMovies} {...otherProps} />
+    </main>
+  );
+};
+
+MainSection.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  movies: PropTypes.array.isRequired,
+};
 
 export default MainSection;

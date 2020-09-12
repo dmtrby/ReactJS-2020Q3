@@ -1,7 +1,8 @@
 import React from 'react';
 
-import './footer-section.scss';
 import Logotype from '../Logotype';
+
+import './footer-section.scss';
 
 const FooterSection = () => (
   <footer className="footer padding-top-1 padding-bottom-1">
