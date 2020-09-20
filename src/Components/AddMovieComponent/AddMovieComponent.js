@@ -7,7 +7,7 @@ import ModalWindow from '../ModalWIndow';
 import Heading from '../Base/Heading';
 import AddMovieForm from '../AddMovieForm';
 
-const AddMovieComponent = ({ addMovie, ...otherProps }) => {
+const AddMovieComponent = ({ addMovieRequest }) => {
   const [show, setModal] = useState(false);
   return (
     <>
@@ -19,14 +19,14 @@ const AddMovieComponent = ({ addMovie, ...otherProps }) => {
         <Heading headingLevel={2} classList="h1">
           add movie
         </Heading>
-        <AddMovieForm hideModal={() => setModal(!show)} onSubmit={addMovie} {...otherProps} />
+        <AddMovieForm hideModal={() => setModal(!show)} onSubmit={addMovieRequest} />
       </ModalWindow>
     </>
   );
 };
 
 AddMovieComponent.propTypes = {
-  addMovie: PropTypes.func.isRequired,
+  addMovieRequest: PropTypes.func.isRequired,
 };
 
 export default AddMovieComponent;

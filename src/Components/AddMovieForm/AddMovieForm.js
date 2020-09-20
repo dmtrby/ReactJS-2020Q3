@@ -160,7 +160,7 @@ AddMovieForm.propTypes = {
   genres: PropTypes.array,
   description: PropTypes.string,
   duration: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
 };
 
 AddMovieForm.defaultProps = {
@@ -170,7 +170,7 @@ AddMovieForm.defaultProps = {
   genres: [],
   description: '',
   duration: '',
-  id: '',
+  id: undefined,
   hideModal: () => console.warn('hide modal func doesnt exist'),
 };
 

@@ -7,7 +7,7 @@ import DetailsPageHeader from '../DetailsPageHeader';
 import './header-section.scss';
 import bgImage from '../../images/header_background.jpg';
 
-const Header = ({ isDetailsPage, detailsMovieData, setMainPage, addMovie, searchMovies }) => (
+const Header = ({ isDetailsPage, detailsMovieData, onSearchButtonClick }) => (
   <header className="header">
     <div className="header__background">
       <img className="header__background-image" src={bgImage} alt="" />
@@ -15,9 +15,9 @@ const Header = ({ isDetailsPage, detailsMovieData, setMainPage, addMovie, search
     </div>
     <div className="header__content">
       {isDetailsPage ? (
-        <DetailsPageHeader {...detailsMovieData} setMainPage={setMainPage} />
+        <DetailsPageHeader {...detailsMovieData} onSearchButtonClick={onSearchButtonClick} />
       ) : (
-        <MainPageHeader addMovie={addMovie} searchMovies={searchMovies} />
+        <MainPageHeader />
       )}
     </div>
   </header>
@@ -25,9 +25,7 @@ const Header = ({ isDetailsPage, detailsMovieData, setMainPage, addMovie, search
 
 Header.propTypes = {
   isDetailsPage: PropTypes.bool.isRequired,
-  setMainPage: PropTypes.func.isRequired,
-  searchMovies: PropTypes.func.isRequired,
-  addMovie: PropTypes.func.isRequired,
+  onSearchButtonClick: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   detailsMovieData: PropTypes.object,
 };

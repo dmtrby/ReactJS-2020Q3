@@ -5,16 +5,14 @@ import Button from '../Base/Button';
 
 import './genre-selector.scss';
 
-const genres = ['All', 'Drama', 'Comedy', 'Biography', 'Crime'];
-
-const GenreSelector = ({ filterBy, changeFilter }) => (
+const GenreSelector = ({ filter, changeFilterHandler, genresData }) => (
   <nav className="genre-selector">
     <ul className="genre-selector__list">
-      {genres.map((genre) => (
-        <li key={genre}>
+      {genresData.map((genre) => (
+        <li className="genre-selector__item margin-left-1 margin-right-1" key={genre}>
           <Button
-            onClick={() => changeFilter(genre)}
-            classList={`genre-selector__item ${genre === filterBy ? 'genre-selector__item--active' : ''}`}
+            onClick={() => changeFilterHandler(genre)}
+            classList={`genre-selector__button ${genre === filter ? 'genre-selector__button--active' : ''}`}
             variant="text"
             text={genre}
           />
@@ -25,8 +23,10 @@ const GenreSelector = ({ filterBy, changeFilter }) => (
 );
 
 GenreSelector.propTypes = {
-  filterBy: PropTypes.string.isRequired,
-  changeFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  changeFilterHandler: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  genresData: PropTypes.array.isRequired,
 };
 
 export default GenreSelector;

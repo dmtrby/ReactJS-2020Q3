@@ -5,14 +5,14 @@ import Logotype from '../Logotype';
 import Input from '../Base/Input';
 import Button from '../Base/Button';
 import Heading from '../Base/Heading';
-import AddMovieComponent from '../AddMovieComponent';
+import AddMovieContainer from '../AddMovieComponent';
 
-const MainPageHeader = ({ searchMovies, ...otherProps }) => {
+const MainPageHeader = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchMovies(searchValue);
+    console.warn('submit'); // search logic
   };
 
   return (
@@ -22,7 +22,7 @@ const MainPageHeader = ({ searchMovies, ...otherProps }) => {
           <span className="header__logo">
             <Logotype />
           </span>
-          <AddMovieComponent {...otherProps} />
+          <AddMovieContainer />
         </div>
       </div>
       <div className="container">
@@ -57,10 +57,6 @@ const MainPageHeader = ({ searchMovies, ...otherProps }) => {
       </div>
     </>
   );
-};
-
-MainPageHeader.propTypes = {
-  searchMovies: PropTypes.func.isRequired,
 };
 
 export default MainPageHeader;

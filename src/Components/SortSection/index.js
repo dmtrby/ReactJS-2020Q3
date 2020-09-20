@@ -1,3 +1,3 @@
-import SortSection from './SortSection';
+import SortSectionContainer from './SortSectionContainer';
 
-export default SortSection;
+export default SortSectionContainer;
