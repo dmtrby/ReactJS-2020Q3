@@ -71,37 +71,6 @@ const editMovieFailure = (error) => ({
   payload: { error },
 });
 
-const fetchEditMovie = (data) =>
-  fetch('http://localhost:4000/movies', {
-    method: 'PUT',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then(
-    (response) => response.json(),
-    (reject) => reject.json(),
-  );
-
-const editMovie = (data) => (dispatch) => {
-  const sendData = {
-    id: data.id,
-    title: data.name || 'ABC name',
-    genres: data.genres || ['drama'],
-    release_date: '2016-12-29',
-    poster_path: 'https://image.tmdb.org/t/p/w500/ylXCdC106IKiarftHkcacasaAcb.jpg',
-    overview: data.description || 'test overview',
-    runtime: 128,
-    vote_average: 7.9,
-  };
-  dispatch(editMovieBegin());
-  return fetchEditMovie(sendData).then(
-    (response) => dispatch(editMovieSuccess(response)),
-    (error) => dispatch(editMovieFailure(error)),
-  );
-};
-
 // delete movie
 const deleteMovieBegin = () => ({
   type: DELETE_MOVIE_BEGIN,
@@ -116,22 +85,6 @@ const deleteMovieFailure = (error) => ({
   type: DELETE_MOVIE_FAILURE,
   payload: { error },
 });
-
-const fetchDeleteMovie = (id) =>
-  fetch(`http://localhost:4000/movies/${id}`, {
-    method: 'DELETE',
-  }).then(
-    (response) => response.json(),
-    (reject) => reject.json(),
-  );
-
-const deleteMovie = (id) => (dispatch) => {
-  dispatch(deleteMovieBegin());
-  return fetchDeleteMovie(id).then(
-    (response) => dispatch(deleteMovieSuccess(response)),
-    (error) => dispatch(deleteMovieFailure(error)),
-  );
-};
 
 // add movie
 
@@ -149,39 +102,6 @@ const addMovieFailure = (error) => ({
   payload: { error },
 });
 
-const fetchAddMovie = (data) => {
-  const sendData = {
-    title: data.name || 'test name',
-    genres: data.genres || ['drama'],
-    release_date: '2016-12-29',
-    poster_path: 'https://image.tmdb.org/t/p/w500/ylXCdC106IKiarftHkcacasaAcb.jpg',
-    overview: data.description || 'test overview',
-    runtime: 128,
-    vote_average: 7.9,
-  };
-  return fetch('http://localhost:4000/movies', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(sendData),
-  }).then(
-    (response) => response.json(),
-    (reject) => reject.json(),
-  );
-};
-
-const addMovie = (data) => (dispatch) => {
-  dispatch(addMovieBegin());
-  return fetchAddMovie(data).then(
-    (response) => dispatch(addMovieSuccess(response)),
-    (error) => dispatch(addMovieFailure(error)),
-  );
-};
-
-// get movie
-
 const setUrlParams = ({ movies }) => {
   const { filter, sort } = movies;
   let url = BASE_URL;
@@ -194,6 +114,27 @@ const setUrlParams = ({ movies }) => {
   }
   return url;
 };
+
+// ACTION CREATORS START
+const fetchEditMovie = (data) =>
+  fetch('http://localhost:4000/movies', {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+const fetchAddMovie = (data) =>
+  fetch('http://localhost:4000/movies', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
 const getMovies = (url) =>
   fetch(url)
@@ -210,5 +151,43 @@ const fetchMovies = () => (dispatch, getState) => {
     (error) => dispatch(fetchMoviesFailure(error)),
   );
 };
+
+const addMovie = (data) => (dispatch) => {
+  dispatch(addMovieBegin());
+  return fetchAddMovie(data).then(
+    (response) => {
+      dispatch(addMovieSuccess(response));
+      dispatch(fetchMovies());
+    },
+    (error) => {
+      dispatch(addMovieFailure(error));
+    },
+  );
+};
+
+const editMovie = (data) => (dispatch) => {
+  dispatch(editMovieBegin());
+  return fetchEditMovie(data).then(
+    (response) => {
+      dispatch(editMovieSuccess(response));
+      dispatch(fetchMovies());
+    },
+    (error) => dispatch(editMovieFailure(error)),
+  );
+};
+
+const deleteMovie = (id) => (dispatch) => {
+  dispatch(deleteMovieBegin());
+  return fetch(`http://localhost:4000/movies/${id}`, {
+    method: 'DELETE',
+  }).then(
+    (response) => {
+      dispatch(deleteMovieSuccess(response));
+      dispatch(fetchMovies());
+    },
+    (error) => dispatch(deleteMovieFailure(error)),
+  );
+};
+// ACTION CREATORS END
 
 export { setMainPage, setDetailsPage, fetchMovies, addMovie, changeFilter, changeSort, deleteMovie, editMovie };

@@ -6,15 +6,11 @@ import WebApplication from './WebApplication';
 import { fetchMovies } from '../../actions';
 
 const WebApplicationContainer = ({ fetchMoviesFromServer, ...state }) => {
-  const { movies, needToUpdate } = state;
+  const { movies } = state;
 
   useEffect(() => {
     fetchMoviesFromServer();
   }, []);
-
-  useEffect(() => {
-    fetchMoviesFromServer();
-  }, [needToUpdate]);
 
   const renderGenres = useMemo(() => {
     if (movies.length) {
@@ -36,7 +32,6 @@ const mapStateToProps = (state) => ({
   movies: state.movies.movies,
   isLoading: state.movies.isLoading,
   error: state.movies.error,
-  needToUpdate: state.movies.needToUpdate,
 });
 
 WebApplicationContainer.propTypes = {

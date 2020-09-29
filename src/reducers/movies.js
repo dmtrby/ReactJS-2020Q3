@@ -6,7 +6,6 @@ const initialMoviesState = {
   detailsMovieData: null,
   filter: 'All',
   sort: 'title',
-  needToUpdate: true,
 };
 
 const movies = (state = initialMoviesState, action) => {
@@ -23,27 +22,6 @@ const movies = (state = initialMoviesState, action) => {
         ...state,
         isLoading: false,
         movies: action.payload.movies,
-        needToUpdate: false,
-      };
-    case 'ADD_MOVIE_SUCCESS':
-      return {
-        ...state,
-        needToUpdate: true,
-      };
-    case 'DELETE_MOVIE_SUCCESS':
-      return {
-        ...state,
-        needToUpdate: true,
-      };
-    case 'DELETE_MOVIE_FAILURE':
-      return {
-        ...state,
-        needToUpdate: true,
-      };
-    case 'EDIT_MOVIE_SUCCESS':
-      return {
-        ...state,
-        needToUpdate: true,
       };
     case 'CHANGE_FILTER':
       return {

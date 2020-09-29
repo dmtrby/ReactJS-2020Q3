@@ -20,7 +20,7 @@ const drawGenres = (genres) =>
     </span>
   ));
 
-const MovieCard = ({ openMovieDetails, editMovie, removeMovie, ...movie }) => {
+const MovieCard = ({ openMovieDetails, ...movie }) => {
   const { title, release_date, genres, poster_path } = movie;
   const year = new Date(Date.parse(release_date)).getFullYear();
   return (
@@ -55,8 +55,6 @@ const MovieCard = ({ openMovieDetails, editMovie, removeMovie, ...movie }) => {
 
 MovieCard.propTypes = {
   openMovieDetails: PropTypes.func.isRequired,
-  editMovie: PropTypes.func.isRequired,
-  removeMovie: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
   poster_path: PropTypes.string.isRequired,
