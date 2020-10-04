@@ -9,41 +9,22 @@ import IconComponent from '../Base/IconComponent';
 
 import './sort-section.scss';
 
-const mockedSortSectionData = [
-  {
-    name: 'name',
-    render: 'Title',
-  },
-  {
-    name: 'year',
-    render: 'Release date',
-  },
-  {
-    name: 'duration',
-    render: 'Duration',
-  },
-  {
-    name: 'rating',
-    render: 'Rating',
-  },
-];
-
-const SortSection = ({ sortBy, onSortChange }) => (
+const SortSection = ({ changeSortHandler, sort, sortSectionData }) => (
   <div className="container">
     <div className="row end-xs">
       <span className="sort-section__title">sort by</span>
       <Listbox
-        defaultValue={sortBy}
+        defaultValue={sort}
         className="sort-section__dropdown margin-left-2"
         arrow={<IconComponent xlinkHref="#icons-sprite_down-arrow" color="primary" />}
-        onChange={onSortChange}
+        onChange={changeSortHandler}
       >
-        {mockedSortSectionData.map((sort) => (
+        {sortSectionData.map((item) => (
           <ListboxOption
-            key={sort.name}
-            value={sort.name}
+            key={item.name}
+            value={item.name}
           >
-            {sort.render}
+            {item.render}
           </ListboxOption>
         ))}
       </Listbox>
@@ -52,8 +33,10 @@ const SortSection = ({ sortBy, onSortChange }) => (
 );
 
 SortSection.propTypes = {
-  sortBy: PropTypes.string.isRequired,
-  onSortChange: PropTypes.func.isRequired,
+  sort: PropTypes.string.isRequired,
+  changeSortHandler: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  sortSectionData: PropTypes.array.isRequired,
 };
 
 export default SortSection;

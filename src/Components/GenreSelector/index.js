@@ -1,3 +1,3 @@
-import GengreSelector from './GengreSelector';
+import GenreSelectorContainer from './GenreSelectorContainer';
 
-export default GengreSelector;
+export default GenreSelectorContainer;

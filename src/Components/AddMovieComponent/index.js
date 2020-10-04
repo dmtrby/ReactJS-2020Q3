@@ -1,3 +1,3 @@
-import AddMovieComponent from './AddMovieComponent';
+import AddMovieContainer from './AddMovieContainer';
 
-export default AddMovieComponent;
+export default AddMovieContainer;

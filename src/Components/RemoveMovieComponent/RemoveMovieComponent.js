@@ -6,12 +6,12 @@ import Button from '../Base/Button';
 import ModalWindow from '../ModalWIndow';
 import Heading from '../Base/Heading';
 
-const RemoveMovieComponent = ({ onSubmit, movie }) => {
+const RemoveMovieComponent = ({ movie, deleteMovieHandler }) => {
   const [show, setModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(movie);
+    deleteMovieHandler(movie.id);
     setModal(!show);
   };
 
@@ -51,7 +51,7 @@ const RemoveMovieComponent = ({ onSubmit, movie }) => {
 RemoveMovieComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   movie: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  deleteMovieHandler: PropTypes.func.isRequired,
 };
 
 export default RemoveMovieComponent;

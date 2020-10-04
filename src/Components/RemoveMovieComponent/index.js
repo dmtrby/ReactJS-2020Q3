@@ -1,3 +1,3 @@
-import RemoveMovieComponent from './RemoveMovieComponent';
+import RemoveMovieContainer from './RemoveMovieContainer';
 
-export default RemoveMovieComponent;
+export default RemoveMovieContainer;

@@ -1,3 +1,3 @@
-import HeaderSection from './HeaderSection';
+import HeaderSectionContainer from './HeaderSectionContainer';
 
-export default HeaderSection;
+export default HeaderSectionContainer;

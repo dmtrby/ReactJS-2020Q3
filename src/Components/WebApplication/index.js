@@ -1,3 +1,3 @@
-import WebApplication from './WebApplication';
+import WebApplicationContainer from './WebApplicationContainer';
 
-export default WebApplication;
+export default WebApplicationContainer;

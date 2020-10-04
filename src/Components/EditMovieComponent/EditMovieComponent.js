@@ -6,7 +6,7 @@ import ModalWindow from '../ModalWIndow';
 import Heading from '../Base/Heading';
 import AddMovieForm from '../AddMovieForm';
 
-const EditMovieComponent = ({ editMovie, movie }) => {
+const EditMovieComponent = ({ editMovieHandler, movie }) => {
   const [show, setModal] = useState(false);
   return (
     <>
@@ -21,7 +21,7 @@ const EditMovieComponent = ({ editMovie, movie }) => {
         <Heading headingLevel={2} classList="h1">
           edit movie
         </Heading>
-        <AddMovieForm hideModal={() => setModal(!show)} onSubmit={editMovie} {...movie} />
+        <AddMovieForm hideModal={() => setModal(!show)} onSubmit={editMovieHandler} {...movie} />
       </ModalWindow>
     </>
   );
@@ -30,7 +30,7 @@ const EditMovieComponent = ({ editMovie, movie }) => {
 EditMovieComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   movie: PropTypes.object.isRequired,
-  editMovie: PropTypes.func.isRequired,
+  editMovieHandler: PropTypes.func.isRequired,
 };
 
 export default EditMovieComponent;

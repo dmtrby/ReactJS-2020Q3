@@ -1,0 +1,27 @@
+div.select {
+  &__control {
+    width: auto;
+    font-size: 1.8rem;
+
+    &:hover, &:focus {
+     border-color: $white;
+     box-shadow: none!important;
+    }
+  }
+
+  &__value-container {
+    padding: 1rem;
+  }
+
+  &--invalid {
+    .select__control {
+      border-color: $primary !important;
+    }
+  }
+
+  &--valid {
+    .select__control {
+      border-color: $green !important;
+    }
+  }
+}

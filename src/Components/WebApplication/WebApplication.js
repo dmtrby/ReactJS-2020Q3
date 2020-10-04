@@ -1,77 +1,37 @@
-import React, { useState, useMemo } from 'react';
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import HeaderSection from '../HeaderSection';
+import HeaderSectionContainer from '../HeaderSection';
 import MainSection from '../MainSection';
-import useFetchedMovies from '../../Hooks/useFetchedMovies';
 
-const WebApplication = () => {
-  const [appStatus, setAppStatus] = useState({
-    isDetailsPage: false,
-    detailsMovieData: null,
-  });
+const WebApplication = ({ error, isLoading, movies, renderGenres }) => (
+  <>
+    <HeaderSectionContainer />
+    {movies.length !== 0 && <MainSection movies={movies} genresData={renderGenres} />}
+    {isLoading && (
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12">loading</div>
+        </div>
+      </div>
+    )}
+    {error && (
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12">error</div>
+        </div>
+      </div>
+    )}
+  </>
+);
 
-  const [moviesData, setMoviesData] = useFetchedMovies();
-
-  const [filterString, setFilterString] = useState('');
-
-  const searchMovies = (stringValue) => {
-    setFilterString(stringValue);
-  };
-
-  const addMovie = (newMovie) => {
-    moviesData.push({ ...newMovie, id: moviesData.length + 1, rating: '9' }); // remove rating later ( and id maybe)
-    setMoviesData([...moviesData]);
-  };
-
-  const editMovie = (newMovieData) => {
-    moviesData.forEach((v, i) => {
-      if (v.id === newMovieData.id) {
-        moviesData[i] = { ...newMovieData, rating: moviesData[i].rating };
-      }
-    });
-    setMoviesData([...moviesData]);
-  };
-
-  const removeMovie = (movie) => {
-    setMoviesData([...moviesData.filter((v) => v.id !== movie.id)]);
-  };
-
-  const setDetailsPage = (data) => {
-    setAppStatus({
-      ...appStatus,
-      isDetailsPage: true,
-      detailsMovieData: data,
-    });
-  };
-
-  const setMainPage = () => {
-    setAppStatus({
-      ...appStatus,
-      isDetailsPage: false,
-      detailsMovieData: null,
-    });
-  };
-
-  const filteredData = useMemo(
-    () => (moviesData ? moviesData.filter((v) => v.name.toLowerCase().includes(filterString.toLowerCase())) : null),
-    [filterString, moviesData],
-  );
-
-  return (
-    <>
-      <HeaderSection {...appStatus} setMainPage={setMainPage} addMovie={addMovie} searchMovies={searchMovies} />
-      {filteredData ? (
-        <MainSection
-          setDetailsPage={setDetailsPage}
-          editMovie={editMovie}
-          removeMovie={removeMovie}
-          movies={filteredData}
-        />
-      ) : (
-        'loading'
-      )}
-    </>
-  );
+WebApplication.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  renderGenres: PropTypes.array.isRequired,
+  error: PropTypes.object,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default WebApplication;

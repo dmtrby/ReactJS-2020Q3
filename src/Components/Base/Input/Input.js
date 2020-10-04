@@ -40,7 +40,10 @@ Input.propTypes = {
   classList: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   disabled: PropTypes.bool,
 };
 

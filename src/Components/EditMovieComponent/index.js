@@ -1,3 +1,3 @@
-import EditMovieComponent from './EditMovieComponent';
+import EditMovieContainer from './EditMovieContainer';
 
-export default EditMovieComponent;
+export default EditMovieContainer;
