@@ -1,0 +1,34 @@
+.error-page {
+  background: $black;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__footer {
+    margin-top: auto;
+  }
+
+  &__header {
+    margin-top: 0;
+  }
+
+  &__section {
+    height: calc(100% - 20rem);
+  }
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__button {
+    text-align: center;
+  }
+
+  &__404 {
+    font-size: 10rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2rem;
+    color: $primary;
+  }
+}

@@ -5,12 +5,22 @@
   font-size: 1.8rem;
   font-weight: 300;
   font: inherit;
+  text-decoration: none;
 
   &--primary {
     padding: 1.5rem 6rem;
     font-size: 1.8rem;
     border-radius: .5rem;
     background: $primary;
+  }
+
+  &--inherit {
+    padding: 1.5rem 6rem;
+    font-size: 1.8rem;
+    border-radius: .5rem;
+    background: inherit;
+    color: $primary;
+    border: 1px solid $primary;
   }
 
   &--secondary {

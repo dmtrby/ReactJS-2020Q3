@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SortSection from './SortSection';
-import { changeSort, fetchMovies } from '../../actions';
+import { fetchMovies, setSort } from '../../actions';
 
 const mockedSortSectionData = [
   {
@@ -23,9 +23,11 @@ const mockedSortSectionData = [
 
 const mapDispatchToProps = (dispatch) => ({
   changeSortHandler: (newSort) => {
-    dispatch(changeSort(newSort));
     dispatch(fetchMovies());
   },
+  setSortBy: (newSort) => {
+    dispatch(setSort(newSort));
+  }
 });
 
 const mapStateToProps = (state) => ({

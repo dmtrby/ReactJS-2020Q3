@@ -1,3 +1,3 @@
-import DetailsPageHeader from './DetailsPageHeader';
+import DetailsPageHeaderContainer from './DetailsPageHeaderContainer';
 
-export default DetailsPageHeader;
+export default DetailsPageHeaderContainer;

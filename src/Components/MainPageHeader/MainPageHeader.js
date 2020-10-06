@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import PropTypes, { object } from 'prop-types';
+import { Link, useHistory } from 'react-router-dom';
+import queryString from 'query-string';
+import { connect } from 'react-redux';
+import { setSearch } from '../../actions';
 
 import Logotype from '../Logotype';
 import Input from '../Base/Input';
@@ -7,12 +11,40 @@ import Button from '../Base/Button';
 import Heading from '../Base/Heading';
 import AddMovieContainer from '../AddMovieComponent';
 
-const MainPageHeader = () => {
-  const [searchValue, setSearchValue] = useState('');
+const MainPageHeader = ({ search, setSearchBy }) => {
+  const [searchValue, setSearchValue] = useState(search);
+  const history = useHistory();
+  useEffect(() => {
+    const values = queryString.parse(history.location.search);
+    if (values.search) {
+      setSearchBy(values.search);
+      setSearchValue(values.search);
+    }
+  }, []);
+
+  const makeUrl = (newValue) => {
+    const queryValues = queryString.parse(history.location.search);
+    queryValues.search = newValue;
+    const url = queryString.stringify(queryValues, {
+      skipEmptyString: true,
+    });
+    return `?${url}`;
+  };
+
+  const handleChange = (newValue) => {
+    setSearchValue(newValue);
+    setSearchBy(newValue);
+    const url = makeUrl(newValue);
+    const { pathname } = history.location;
+    history.push('/movies/search' + url);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const url = makeUrl(searchValue);
+    setSearchBy(searchValue);
     console.warn('submit'); // search logic
+    history.push('/movies/search' + url);
   };
 
   return (
@@ -38,7 +70,7 @@ const MainPageHeader = () => {
                     type="text"
                     classList="search-form__input"
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => handleChange(e.target.value)}
                     id="search"
                     name="search"
                     placeHolder="What do you want to watch?"
@@ -59,4 +91,14 @@ const MainPageHeader = () => {
   );
 };
 
-export default MainPageHeader;
+const mapDispatchToProps = (dispatch) => ({
+  setSearchBy: (newSearchBy) => {
+    dispatch(setSearch(newSearchBy));
+  },
+});
+
+const mapStateToProps = (state) => ({
+  search: state.movies.search,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageHeader);
