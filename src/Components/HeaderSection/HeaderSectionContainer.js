@@ -1,15 +1,14 @@
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useParams, Redirect } from 'react-router-dom';
 
+import MainPageHeader from '../MainPageHeader';
+import DetailsPageHeaderContainer from '../DetailsPageHeader';
 import HeaderSection from './HeaderSection';
-import { setMainPage } from '../../actions';
 
-const mapStateToProps = (state) => ({
-  detailsMovieData: state.movies.detailsMovieData,
-  isDetailsPage: state.movies.isDetailsPage,
-});
+const HeaderSectionContainer = () => {
+  const { id } = useParams();
+  return <HeaderSection>{id ? <DetailsPageHeaderContainer id={id} /> : <MainPageHeader />} </HeaderSection>;
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  onSearchButtonClick: () => dispatch(setMainPage()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderSection);
+export default HeaderSectionContainer;

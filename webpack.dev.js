@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dev'),
     filename: 'main-dev.js',
+    publicPath: '/',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -16,6 +17,7 @@ module.exports = {
     compress: true,
     port: 8000,
     open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [

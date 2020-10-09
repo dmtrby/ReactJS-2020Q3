@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Logotype from '../Logotype';
-import Button from '../Base/Button';
 import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
 
@@ -16,16 +16,7 @@ const drawGenres = (genres) =>
     </span>
   ));
 
-const DetailsPageHeader = ({
-  title,
-  release_date,
-  poster_path,
-  genres,
-  vote_average,
-  overview,
-  runtime,
-  onSearchButtonClick,
-}) => {
+const DetailsPageHeader = ({ title, release_date, poster_path, genres, vote_average, overview, runtime }) => {
   const year = new Date(Date.parse(release_date)).getFullYear();
   return (
     <>
@@ -34,9 +25,9 @@ const DetailsPageHeader = ({
           <span className="header__logo">
             <Logotype />
           </span>
-          <Button variant="text" onClick={onSearchButtonClick} classList="modal__close-button">
+          <Link to="/" className="modal__close-button button button--text">
             <IconComponent xlinkHref="#icons-sprite_search" color="primary" />
-          </Button>
+          </Link>
         </div>
       </div>
       <div className="container padding-bottom-2">
@@ -86,7 +77,6 @@ DetailsPageHeader.propTypes = {
   vote_average: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
   runtime: PropTypes.number.isRequired,
-  onSearchButtonClick: PropTypes.func.isRequired,
 };
 
 export default DetailsPageHeader;

@@ -1,7 +1,9 @@
 const BASE_URL = 'http://localhost:4000/movies?limit=39';
 
-const SET_MAIN_PAGE = 'SET_MAIN_PAGE';
-const SET_DETAILS_PAGE = 'SET_DETAILS_PAGE';
+const FETCH_MOVIE_BEGIN = 'FETCH_MOVIE_BEGIN';
+const FETCH_MOVIE_SUCCESS = 'FETCH_MOVIE_SUCCESS';
+const FETCH_MOVIE_FAILURE = 'FETCH_MOVIE_FAILURE';
+const FETCH_MOVIE_404 = 'FETCH_MOVIE_404';
 
 const FETCH_MOVIES_BEGIN = 'FETCH_MOVIES_BEGIN';
 const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
@@ -21,24 +23,39 @@ const EDIT_MOVIE_FAILURE = 'ADD_MOVIE_FAILURE';
 
 const CHANGE_FILTER = 'CHANGE_FILTER';
 const CHANGE_SORT = 'CHANGE_SORT';
+const CHANGE_SEARCH = 'CHANGE_SEARCH';
 
-const changeFilter = (newFilter) => ({
+const setFilter = (value) => ({
   type: CHANGE_FILTER,
-  filter: newFilter,
+  value: value,
 });
 
-const changeSort = (newSort) => ({
+const setSort = (value) => ({
   type: CHANGE_SORT,
-  sort: newSort,
+  value: value,
 });
 
-const setMainPage = () => ({
-  type: SET_MAIN_PAGE,
+const setSearch = (value) => ({
+  type: CHANGE_SEARCH,
+  value: value,
 });
 
-const setDetailsPage = (id) => ({
-  type: SET_DETAILS_PAGE,
-  id,
+const fetchMovieBegin = () => ({
+  type: FETCH_MOVIE_BEGIN,
+});
+
+const fetchMovie404 = () => ({
+  type: FETCH_MOVIE_404,
+});
+
+const fetchMovieSuccess = (movie) => ({
+  type: FETCH_MOVIE_SUCCESS,
+  payload: { movie },
+});
+
+const fetchMovieFailure = (error) => ({
+  type: FETCH_MOVIE_FAILURE,
+  payload: { error },
 });
 
 const fetchMoviesBegin = () => ({
@@ -102,15 +119,20 @@ const addMovieFailure = (error) => ({
   payload: { error },
 });
 
-const setUrlParams = ({ movies }) => {
-  const { filter, sort } = movies;
+const setUrlParams = (data) => {
+  const [filter, sortBy, search] = data;
+
   let url = BASE_URL;
-  if (filter !== 'All') {
+  if (filter && filter !== 'All') {
     url += `&filter=${filter}`;
   }
-  if (sort) {
-    url += `&sortBy=${sort}`;
+  if (sortBy) {
+    url += `&sortBy=${sortBy}`;
     url += '&sortOrder=asc';
+  }
+  if (search) {
+    url += `&search=${search}`;
+    url += `&searchBy=title`;
   }
   return url;
 };
@@ -141,9 +163,10 @@ const getMovies = (url) =>
     .then((response) => response.json())
     .then((moviesData) => moviesData.data);
 
-const fetchMovies = () => (dispatch, getState) => {
-  const state = getState();
-  const url = setUrlParams(state);
+const fetchMovies = (...data) => (dispatch) => {
+
+  const url = setUrlParams(data);
+
 
   dispatch(fetchMoviesBegin());
   return getMovies(url).then(
@@ -188,6 +211,25 @@ const deleteMovie = (id) => (dispatch) => {
     (error) => dispatch(deleteMovieFailure(error)),
   );
 };
+
+const fetchMovie = (id) => (dispatch) => {
+  dispatch(fetchMovieBegin());
+
+  return fetch(`http://localhost:4000/movies/${id}`)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('404');
+      }
+    })
+    .catch((error) => {
+      dispatch(fetchMovie404());
+    })
+    .then((data) => {
+      return dispatch(fetchMovieSuccess(data));
+    });
+};
 // ACTION CREATORS END
 
-export { setMainPage, setDetailsPage, fetchMovies, addMovie, changeFilter, changeSort, deleteMovie, editMovie };
+export { setSort, setFilter, setSearch, fetchMovie, fetchMovies, addMovie, deleteMovie, editMovie };

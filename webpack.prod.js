@@ -10,6 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'prod'),
     filename: 'main.js',
+    publicPath: '/',
   },
   devtool: 'source-map',
   devServer: {
@@ -17,6 +18,7 @@ module.exports = {
     compress: true,
     port: 9000,
     open: true,
+    historyApiFallback: true,
   },
   performance: {
     hints: false,

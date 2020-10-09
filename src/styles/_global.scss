@@ -10,5 +10,11 @@ body {
   line-height: 1.5;
   color: $white;
   font-weight: 400;
-  background: $dark-gray;
+  background: $black;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

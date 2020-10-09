@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, MenuList, MenuButton } from '@reach/menu-button';
+import { Link } from 'react-router-dom';
 
 import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
@@ -20,8 +21,8 @@ const drawGenres = (genres) =>
     </span>
   ));
 
-const MovieCard = ({ openMovieDetails, ...movie }) => {
-  const { title, release_date, genres, poster_path } = movie;
+const MovieCard = ({ ...movie }) => {
+  const { title, release_date, genres, poster_path, id } = movie;
   const year = new Date(Date.parse(release_date)).getFullYear();
   return (
     <article className="movie-card">
@@ -37,9 +38,9 @@ const MovieCard = ({ openMovieDetails, ...movie }) => {
 
       <div className="row">
         <div className="col-xs-12">
-          <a href="#" onClick={() => openMovieDetails(movie.id)}>
+          <Link to={`/film/${id}`}>
             <img src={poster_path} alt="" className="movie-card__img" />
-          </a>
+          </Link>
         </div>
         <div className="col-xs-12 padding-bottom-0 padding-top-0">
           <div className="row between-xs">
@@ -54,7 +55,6 @@ const MovieCard = ({ openMovieDetails, ...movie }) => {
 };
 
 MovieCard.propTypes = {
-  openMovieDetails: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
   poster_path: PropTypes.string.isRequired,

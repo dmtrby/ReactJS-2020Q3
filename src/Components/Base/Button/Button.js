@@ -9,12 +9,12 @@ class Button extends React.Component {
     if (!disabled && onClick) {
       onClick({ e });
     }
-  }
+  };
 
   renderChildren = () => {
     const { text, children } = this.props;
     return text || children;
-  }
+  };
 
   renderClasses = () => {
     const { variant, classList } = this.props;
@@ -22,6 +22,9 @@ class Button extends React.Component {
     switch (variant) {
       case 'primary':
         classes += 'button--primary';
+        break;
+      case 'inherit':
+        classes += 'button--inherit';
         break;
       case 'secondary':
         classes += 'button--secondary';
@@ -37,16 +40,12 @@ class Button extends React.Component {
     }
 
     return `${classes}  ${classList}`;
-  }
+  };
 
   render() {
     const { type } = this.props;
     return (
-      <button
-        type={type}
-        onClick={this.handleButtonClick}
-        className={this.renderClasses()}
-      >
+      <button type={type} onClick={this.handleButtonClick} className={this.renderClasses()}>
         {this.renderChildren()}
       </button>
     );
@@ -60,7 +59,7 @@ Button.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   children: PropTypes.node,
-  variant: PropTypes.oneOf(['primary', 'with-icon', 'text', 'secondary']),
+  variant: PropTypes.oneOf(['primary', 'with-icon', 'text', 'secondary', 'inherit']),
 };
 
 Button.defaultProps = {

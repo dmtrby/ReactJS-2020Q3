@@ -4,8 +4,9 @@ const initialMoviesState = {
   error: null,
   isDetailsPage: false,
   detailsMovieData: null,
-  filter: 'All',
-  sort: 'title',
+  filter: '',
+  sortBy: '',
+  search: '',
 };
 
 const movies = (state = initialMoviesState, action) => {
@@ -18,32 +19,44 @@ const movies = (state = initialMoviesState, action) => {
         movies: [],
       };
     case 'FETCH_MOVIES_SUCCESS':
+
       return {
         ...state,
         isLoading: false,
         movies: action.payload.movies,
       };
-    case 'CHANGE_FILTER':
+    case 'FETCH_MOVIE_BEGIN':
       return {
         ...state,
-        filter: action.filter,
+        detailedMovie: null,
+        detailedMovieLoading: true,
       };
     case 'CHANGE_SORT':
       return {
         ...state,
-        sort: action.sort,
+        sortBy: action.value,
       };
-    case 'SET_MAIN_PAGE':
+    case 'CHANGE_FILTER':
       return {
         ...state,
-        isDetailsPage: false,
-        detailsMovieData: null,
+        filter: action.value,
       };
-    case 'SET_DETAILS_PAGE':
+    case 'CHANGE_SEARCH':
       return {
         ...state,
-        isDetailsPage: true,
-        detailsMovieData: state.movies.find((v) => v.id === action.id),
+        search: action.value,
+      };
+    case 'FETCH_MOVIE_SUCCESS':
+      return {
+        ...state,
+        detailedMovie: action.payload.movie,
+        detailedMovieLoading: false,
+      };
+    case 'FETCH_MOVIE_404':
+      return {
+        ...state,
+        detailedMovie: 404,
+        detailedMovieLoading: false,
       };
     default:
       return state;
