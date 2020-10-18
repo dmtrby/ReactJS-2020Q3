@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes, { object } from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
+
 import { setSearch } from '../../actions';
+import { makeUrl } from '../../Utils';
 
 import Logotype from '../Logotype';
 import Input from '../Base/Input';
@@ -22,28 +23,19 @@ const MainPageHeader = ({ search, setSearchBy }) => {
     }
   }, []);
 
-  const makeUrl = (newValue) => {
-    const queryValues = queryString.parse(history.location.search);
-    queryValues.search = newValue;
-    const url = queryString.stringify(queryValues, {
-      skipEmptyString: true,
-    });
-    return `?${url}`;
-  };
-
   const handleChange = (newValue) => {
     setSearchValue(newValue);
     setSearchBy(newValue);
-    const url = makeUrl(newValue);
-    const { pathname } = history.location;
+    const queryValues = queryString.parse(history.location.search);
+    const url = makeUrl(queryValues, 'search', newValue);
     history.push('/movies/search' + url);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = makeUrl(searchValue);
+    const queryValues = queryString.parse(history.location.search);
+    const url = makeUrl(queryValues, 'search', searchValue);
     setSearchBy(searchValue);
-    console.warn('submit'); // search logic
     history.push('/movies/search' + url);
   };
 

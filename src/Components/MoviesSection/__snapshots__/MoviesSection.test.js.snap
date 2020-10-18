@@ -1,0 +1,473 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviesSection in error state should matches the Snapshot 1`] = `
+Array [
+  <div
+    className="page-status container"
+  >
+    <div
+      className="row center-xs"
+    >
+      <div
+        className="col-xs-12"
+      >
+        Error
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page-status container"
+  >
+    <div
+      className="row center-xs"
+    >
+      <div
+        className="col-xs-12"
+      >
+        No movies Found
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`MoviesSection in loading state should matches the Snapshot 1`] = `
+<div
+  className="page-status container"
+>
+  <div
+    className="row center-xs"
+  >
+    <div
+      className="col-xs-12"
+    >
+      Loading...
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MoviesSection with movies should matches the Snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row flex-column"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <span>
+        <strong>
+          3
+        </strong>
+        movies found
+      </span>
+    </div>
+    <div
+      className="col-xs-12 col-no-gutter margin-bottom-6"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-xs-12 col-md-6 col-lg-6 col-xl-4 col-no-gutter-lr"
+        >
+          <article
+            className="movie-card"
+          >
+            <button
+              aria-controls="menu--1"
+              aria-haspopup={true}
+              className="button button--text movie-card__menu"
+              data-reach-menu-button=""
+              id="menu-button--menu"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              type="button"
+            >
+              <svg
+                className="icon  icon--light"
+              >
+                <use
+                  xlinkHref="#icons-sprite_more"
+                />
+              </svg>
+            </button>
+            <div
+              data-reach-menu=""
+              data-reach-menu-popover=""
+              hidden={true}
+            >
+              <div
+                aria-labelledby="menu-button--menu"
+                data-reach-menu-items=""
+                data-reach-menu-list=""
+                id="menu--1"
+                onKeyDown={[Function]}
+                role="menu"
+                tabIndex={-1}
+              >
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Edit
+                </div>
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Remove
+                </div>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-xs-12"
+              >
+                <a
+                  href="/film/1"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt=""
+                    className="movie-card__img"
+                    src="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="col-xs-12 padding-bottom-0 padding-top-0"
+              >
+                <div
+                  className="row between-xs"
+                >
+                  <h3
+                    className=""
+                  >
+                    Thor: Ragnarok
+                  </h3>
+                  <div
+                    className="movie-card__year"
+                  >
+                    2017
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-xs-12 padding-top-0"
+              >
+                <span
+                  className="movie-card__genre"
+                >
+                  Action
+                  , 
+                </span>
+                <span
+                  className="movie-card__genre"
+                >
+                  Adventure
+                  , 
+                </span>
+                <span
+                  className="movie-card__genre"
+                >
+                  Fantasy
+                  
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div
+          className="col-xs-12 col-md-6 col-lg-6 col-xl-4 col-no-gutter-lr"
+        >
+          <article
+            className="movie-card"
+          >
+            <button
+              aria-controls="menu--2"
+              aria-haspopup={true}
+              className="button button--text movie-card__menu"
+              data-reach-menu-button=""
+              id="menu-button--menu"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              type="button"
+            >
+              <svg
+                className="icon  icon--light"
+              >
+                <use
+                  xlinkHref="#icons-sprite_more"
+                />
+              </svg>
+            </button>
+            <div
+              data-reach-menu=""
+              data-reach-menu-popover=""
+              hidden={true}
+            >
+              <div
+                aria-labelledby="menu-button--menu"
+                data-reach-menu-items=""
+                data-reach-menu-list=""
+                id="menu--2"
+                onKeyDown={[Function]}
+                role="menu"
+                tabIndex={-1}
+              >
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Edit
+                </div>
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Remove
+                </div>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-xs-12"
+              >
+                <a
+                  href="/film/2"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt=""
+                    className="movie-card__img"
+                    src="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="col-xs-12 padding-bottom-0 padding-top-0"
+              >
+                <div
+                  className="row between-xs"
+                >
+                  <h3
+                    className=""
+                  >
+                    Aviator
+                  </h3>
+                  <div
+                    className="movie-card__year"
+                  >
+                    2017
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-xs-12 padding-top-0"
+              >
+                <span
+                  className="movie-card__genre"
+                >
+                  Action
+                  , 
+                </span>
+                <span
+                  className="movie-card__genre"
+                >
+                  Horror
+                  , 
+                </span>
+                <span
+                  className="movie-card__genre"
+                >
+                  Fantasy
+                  
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div
+          className="col-xs-12 col-md-6 col-lg-6 col-xl-4 col-no-gutter-lr"
+        >
+          <article
+            className="movie-card"
+          >
+            <button
+              aria-controls="menu--3"
+              aria-haspopup={true}
+              className="button button--text movie-card__menu"
+              data-reach-menu-button=""
+              id="menu-button--menu"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              type="button"
+            >
+              <svg
+                className="icon  icon--light"
+              >
+                <use
+                  xlinkHref="#icons-sprite_more"
+                />
+              </svg>
+            </button>
+            <div
+              data-reach-menu=""
+              data-reach-menu-popover=""
+              hidden={true}
+            >
+              <div
+                aria-labelledby="menu-button--menu"
+                data-reach-menu-items=""
+                data-reach-menu-list=""
+                id="menu--3"
+                onKeyDown={[Function]}
+                role="menu"
+                tabIndex={-1}
+              >
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Edit
+                </div>
+                <div
+                  className="button button--text movie-card__menu-item"
+                  data-reach-menu-item=""
+                  data-selected=""
+                  data-valuetext=""
+                  onClick={[Function]}
+                  onDragStart={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseMove={[Function]}
+                  onMouseUp={[Function]}
+                  role="menuitem"
+                  tabIndex={-1}
+                >
+                  Remove
+                </div>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-xs-12"
+              >
+                <a
+                  href="/film/3"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt=""
+                    className="movie-card__img"
+                    src="https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg"
+                  />
+                </a>
+              </div>
+              <div
+                className="col-xs-12 padding-bottom-0 padding-top-0"
+              >
+                <div
+                  className="row between-xs"
+                >
+                  <h3
+                    className=""
+                  >
+                    ScarFace
+                  </h3>
+                  <div
+                    className="movie-card__year"
+                  >
+                    2017
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-xs-12 padding-top-0"
+              >
+                <span
+                  className="movie-card__genre"
+                >
+                  Action
+                  , 
+                </span>
+                <span
+                  className="movie-card__genre"
+                >
+                  Adventure
+                  
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

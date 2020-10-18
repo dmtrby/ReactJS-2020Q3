@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
+
+import { makeUrl } from '../../Utils';
 
 import Button from '../Base/Button';
 
@@ -19,20 +21,13 @@ const GenreSelector = ({ genresData, setFilterFunction }) => {
     }
   }, []);
 
-  const makeUrl = (newFilter) => {
-    const queryValues = queryString.parse(history.location.search);
-    queryValues.filter = newFilter;
-    const url = queryString.stringify(queryValues, {
-      skipEmptyString: true,
-    });
-    return `?${url}`;
-  };
-
   const changeFilterHandler = (newFilter) => {
+    const queryValues = queryString.parse(history.location.search);
+    console.log(queryValues);
     setFilterValue(newFilter);
     setFilterFunction(newFilter);
     const { pathname } = history.location;
-    const url = makeUrl(newFilter);
+    const url = makeUrl(queryValues, 'filter', newFilter);
     history.push(pathname + url);
   }
 

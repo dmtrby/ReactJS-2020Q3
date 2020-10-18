@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Listbox, ListboxOption } from '@reach/listbox';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
+import { makeUrl } from '../../Utils';
 
 import IconComponent from '../Base/IconComponent';
 
@@ -20,20 +21,12 @@ const SortSection = ({ sortSectionData, setSortBy }) => {
     }
   }, []);
 
-  const makeUrl = (newSort) => {
-    const queryValues = queryString.parse(history.location.search);
-    queryValues.sortBy = newSort;
-    const url = queryString.stringify(queryValues, {
-      skipEmptyString: true,
-    });
-    return `?${url}`;
-  };
-
   const changeSortHandler = (newSort) => {
+    const queryValues = queryString.parse(history.location.search);
     setSortValue(newSort);
     setSortBy(newSort);
     const { pathname } = history.location;
-    const url = makeUrl(newSort);
+    const url = makeUrl(queryValues, 'sortBy', newSort);
     history.push(pathname + url);
   }
 

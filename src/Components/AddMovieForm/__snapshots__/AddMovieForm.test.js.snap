@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMovieForm Snapshots AddMovieForm matches the Snapshot 1`] = `
+<form
+  action="#"
+  autoComplete="off"
+  className="movie-form container"
+  onReset={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="title"
+        >
+          title
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="title"
+          name="title"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Select title"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="release_date"
+        >
+          Release date
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="release_date"
+          name="release_date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Select release date"
+          type="date"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="poster_path"
+        >
+          Poster path
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="poster_path"
+          name="poster_path"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Poster URL here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <div
+          className="col-xs-12 padding-0"
+        >
+          <label
+            className="input-field__label col-xs-12"
+            htmlFor="genres"
+          >
+            Genres
+          </label>
+          <div
+            className="select css-2b097c-container"
+            id="genres"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="select__control css-10q3x8k-control"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <div
+                className="select__value-container select__value-container--is-multi css-g1d714-ValueContainer"
+              >
+                <div
+                  className="select__placeholder css-1wa3eu0-placeholder"
+                >
+                  Select...
+                </div>
+                <div
+                  className="css-b8ldur-Input"
+                >
+                  <div
+                    className="select__input"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      disabled={false}
+                      id="react-select-13-input"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      spellCheck="false"
+                      style={
+                        Object {
+                          "background": 0,
+                          "border": 0,
+                          "boxSizing": "content-box",
+                          "color": "inherit",
+                          "fontSize": "inherit",
+                          "label": "input",
+                          "opacity": 1,
+                          "outline": 0,
+                          "padding": 0,
+                          "width": "1px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <div
+                      style={
+                        Object {
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "scroll",
+                          "position": "absolute",
+                          "top": 0,
+                          "visibility": "hidden",
+                          "whiteSpace": "pre",
+                        }
+                      }
+                    >
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="select__indicators css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  className="select__indicator-separator css-1okebmr-indicatorSeparator"
+                />
+                <div
+                  aria-hidden="true"
+                  className="select__indicator select__dropdown-indicator css-tlfecz-indicatorContainer"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="css-6q0nyr-Svg"
+                    focusable="false"
+                    height={20}
+                    viewBox="0 0 20 20"
+                    width={20}
+                  >
+                    <path
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="overview"
+        >
+          Overview
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="overview"
+          name="overview"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Overview here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="runtime"
+        >
+          Runtime
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="runtime"
+          name="runtime"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Runtime here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12 margin-top-4"
+    >
+      <div
+        className="row end-xs"
+      >
+        <button
+          className="button button--secondary  margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+          onClick={[Function]}
+          type="reset"
+        >
+          reset
+        </button>
+        <button
+          className="button button--primary  margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+          onClick={[Function]}
+          type="submit"
+        >
+          submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`AddMovieForm Snapshots EditMovieForm matches the Snapshot 1`] = `
+<form
+  action="#"
+  autoComplete="off"
+  className="movie-form container"
+  onReset={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="id"
+        >
+          Id
+        </label>
+        <input
+          className="input-field__label__input col-xs-12 "
+          disabled={true}
+          id="id"
+          name=""
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value={1}
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="title"
+        >
+          title
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="title"
+          name="title"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Select title"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="release_date"
+        >
+          Release date
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="release_date"
+          name="release_date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Select release date"
+          type="date"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="poster_path"
+        >
+          Poster path
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="poster_path"
+          name="poster_path"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Poster URL here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <div
+          className="col-xs-12 padding-0"
+        >
+          <label
+            className="input-field__label col-xs-12"
+            htmlFor="genres"
+          >
+            Genres
+          </label>
+          <div
+            className="select css-2b097c-container"
+            id="genres"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="select__control css-10q3x8k-control"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <div
+                className="select__value-container select__value-container--is-multi css-g1d714-ValueContainer"
+              >
+                <div
+                  className="select__placeholder css-1wa3eu0-placeholder"
+                >
+                  Select...
+                </div>
+                <div
+                  className="css-b8ldur-Input"
+                >
+                  <div
+                    className="select__input"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      disabled={false}
+                      id="react-select-14-input"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      spellCheck="false"
+                      style={
+                        Object {
+                          "background": 0,
+                          "border": 0,
+                          "boxSizing": "content-box",
+                          "color": "inherit",
+                          "fontSize": "inherit",
+                          "label": "input",
+                          "opacity": 1,
+                          "outline": 0,
+                          "padding": 0,
+                          "width": "1px",
+                        }
+                      }
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <div
+                      style={
+                        Object {
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "scroll",
+                          "position": "absolute",
+                          "top": 0,
+                          "visibility": "hidden",
+                          "whiteSpace": "pre",
+                        }
+                      }
+                    >
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="select__indicators css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  className="select__indicator-separator css-1okebmr-indicatorSeparator"
+                />
+                <div
+                  aria-hidden="true"
+                  className="select__indicator select__dropdown-indicator css-tlfecz-indicatorContainer"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="css-6q0nyr-Svg"
+                    focusable="false"
+                    height={20}
+                    viewBox="0 0 20 20"
+                    width={20}
+                  >
+                    <path
+                      d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="overview"
+        >
+          Overview
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="overview"
+          name="overview"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Overview here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12"
+    >
+      <div
+        className="input-field row"
+      >
+        <label
+          className="input-field__label col-xs-12"
+          htmlFor="runtime"
+        >
+          Runtime
+        </label>
+        <input
+          className="input-field__label__input col-xs-12  "
+          id="runtime"
+          name="runtime"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Runtime here"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="col-xs-12 margin-top-4"
+    >
+      <div
+        className="row end-xs"
+      >
+        <button
+          className="button button--secondary  margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+          onClick={[Function]}
+          type="reset"
+        >
+          reset
+        </button>
+        <button
+          className="button button--primary  margin-left-lg-2 margin-top-lg-0 margin-top-xs-1"
+          onClick={[Function]}
+          type="submit"
+        >
+          submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+`;

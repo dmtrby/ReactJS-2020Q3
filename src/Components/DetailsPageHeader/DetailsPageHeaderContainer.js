@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { fetchMovie } from '../../actions';
 import DetailsPageHeader from './DetailsPageHeader';

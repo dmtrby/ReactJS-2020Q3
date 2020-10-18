@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 Page matches the Snapshot 1`] = `
+<div
+  className="error-page"
+>
+  <div
+    className="error-page__header container margin-bottom-2"
+  >
+    <div
+      className="header__logo-section row start-xs middle-xs padding-top-2"
+    >
+      <span
+        className="header__logo"
+      >
+        <span
+          className="logotype"
+        >
+          <strong>
+            netflix
+          </strong>
+          roulette
+        </span>
+      </span>
+    </div>
+  </div>
+  <div
+    className="container error-page__section"
+  >
+    <div
+      className="flex-column center"
+    >
+      <div
+        className="col-xs-12 col-lg-10 col-lg-offset-1"
+      >
+        <h1
+          className="error-page__heading"
+        >
+          Page Not Found
+        </h1>
+      </div>
+      <div
+        className="error-page__404 col-xs-12 col-lg-10 col-lg-offset-1"
+      >
+        404
+      </div>
+      <div
+        className="error-page__button col-xs-12 col-lg-10 col-lg-offset-1"
+      >
+        <a
+          className="button button--inherit"
+          href="/"
+          onClick={[Function]}
+        >
+          Go back home
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="error-page__footer"
+  >
+    <footer
+      className="footer padding-top-1 padding-bottom-1"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="row center-xs"
+        >
+          <div
+            className="col-xs"
+          >
+            <div
+              className="row center-xs"
+            >
+              <span
+                className="logotype"
+              >
+                <strong>
+                  netflix
+                </strong>
+                roulette
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
