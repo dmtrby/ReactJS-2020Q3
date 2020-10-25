@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Logotype from '../Logotype';
 import FooterSection from '../FooterSection';
 import Heading from '../Base/Heading';
-import Button from '../Base/Button';
 import './page404.scss';
 
 const Page404 = () => (

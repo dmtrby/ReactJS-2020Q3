@@ -63,8 +63,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  // eslint-disable-next-line no-console
-  onClick: () => console.warn('Here is no click handler (つ▀¯▀)つ'),
+  onClick: () => {},
   disabled: false,
   classList: '',
   text: '',

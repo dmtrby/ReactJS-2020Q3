@@ -260,11 +260,8 @@ AddMovieForm.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   genres: PropTypes.array,
   overview: PropTypes.string,
-  runtime: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
-  id: PropTypes.number,
+  runtime: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 AddMovieForm.defaultProps = {
@@ -275,7 +272,7 @@ AddMovieForm.defaultProps = {
   overview: '',
   runtime: '',
   id: undefined,
-  hideModal: () => console.warn('hide modal func doesnt exist'),
+  hideModal: () => {},
 };
 
 export default AddMovieForm;

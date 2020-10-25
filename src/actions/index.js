@@ -78,9 +78,8 @@ const editMovieBegin = () => ({
   type: EDIT_MOVIE_BEGIN,
 });
 
-const editMovieSuccess = (movie) => ({
+const editMovieSuccess = () => ({
   type: EDIT_MOVIE_SUCCESS,
-  payload: { movie },
 });
 
 const editMovieFailure = (error) => ({
@@ -93,9 +92,8 @@ const deleteMovieBegin = () => ({
   type: DELETE_MOVIE_BEGIN,
 });
 
-const deleteMovieSuccess = (movies) => ({
+const deleteMovieSuccess = () => ({
   type: DELETE_MOVIE_SUCCESS,
-  payload: { movies },
 });
 
 const deleteMovieFailure = (error) => ({
@@ -109,9 +107,8 @@ const addMovieBegin = () => ({
   type: ADD_MOVIE_BEGIN,
 });
 
-const addMovieSuccess = (movie) => ({
+const addMovieSuccess = () => ({
   type: ADD_MOVIE_SUCCESS,
-  payload: { movie },
 });
 
 const addMovieFailure = (error) => ({
@@ -138,63 +135,43 @@ const setUrlParams = (data) => {
 };
 
 // ACTION CREATORS START
-const fetchEditMovie = (data) =>
-  fetch('http://localhost:4000/movies', {
-    method: 'PUT',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
 
-const fetchAddMovie = (data) =>
-  fetch('http://localhost:4000/movies', {
+const fetchMovies = (...data) => (dispatch) => {
+  const url = setUrlParams(data);
+
+  dispatch(fetchMoviesBegin());
+  return fetch(url)
+    .then((res) => res.json())
+    .then((data) => dispatch(fetchMoviesSuccess(data.data)))
+    .catch((error) => dispatch(fetchMoviesFailure(error)));
+};
+
+const addMovie = (data) => (dispatch) => {
+  dispatch(addMovieBegin());
+  return fetch('http://localhost:4000/movies', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  });
-
-const getMovies = (url) =>
-  fetch(url)
-    .then((response) => response.json())
-    .then((moviesData) => moviesData.data);
-
-const fetchMovies = (...data) => (dispatch) => {
-
-  const url = setUrlParams(data);
-
-
-  dispatch(fetchMoviesBegin());
-  return getMovies(url).then(
-    (data) => dispatch(fetchMoviesSuccess(data)),
-    (error) => dispatch(fetchMoviesFailure(error)),
-  );
-};
-
-const addMovie = (data) => (dispatch) => {
-  dispatch(addMovieBegin());
-  return fetchAddMovie(data).then(
-    (response) => {
-      dispatch(addMovieSuccess(response));
-      dispatch(fetchMovies());
-    },
-    (error) => {
-      dispatch(addMovieFailure(error));
-    },
+  }).then(
+    (response) => dispatch(addMovieSuccess()),
+    (error) => dispatch(addMovieFailure(error)),
   );
 };
 
 const editMovie = (data) => (dispatch) => {
   dispatch(editMovieBegin());
-  return fetchEditMovie(data).then(
-    (response) => {
-      dispatch(editMovieSuccess(response));
-      dispatch(fetchMovies());
+  return fetch('http://localhost:4000/movies', {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify(data),
+  }).then(
+    (response) => dispatch(editMovieSuccess()),
     (error) => dispatch(editMovieFailure(error)),
   );
 };
@@ -204,10 +181,7 @@ const deleteMovie = (id) => (dispatch) => {
   return fetch(`http://localhost:4000/movies/${id}`, {
     method: 'DELETE',
   }).then(
-    (response) => {
-      dispatch(deleteMovieSuccess(response));
-      dispatch(fetchMovies());
-    },
+    (response) => dispatch(deleteMovieSuccess()),
     (error) => dispatch(deleteMovieFailure(error)),
   );
 };
@@ -223,12 +197,8 @@ const fetchMovie = (id) => (dispatch) => {
         throw new Error('404');
       }
     })
-    .catch((error) => {
-      dispatch(fetchMovie404());
-    })
-    .then((data) => {
-      return dispatch(fetchMovieSuccess(data));
-    });
+    .then((data) => dispatch(fetchMovieSuccess(data)))
+    .catch((error) => dispatch(fetchMovie404()));
 };
 // ACTION CREATORS END
 

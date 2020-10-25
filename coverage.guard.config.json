@@ -1,0 +1,25 @@
+{
+  "appRootRelativeToGitRepo": "src",
+  "excludeKeywords": [
+    "// skip-coverage-check",
+    "backbone",
+    "class SomeUglyClass"
+  ],
+  "featureNameRegExp": {
+    "body": "APP-[0-9]+",
+    "flags": "g"
+  },
+  "excludeFiles": [ "test.js", ".less"],
+  "addedFilesQualityGate": {
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100
+  },
+  "changedFilesQualityGate": {
+    "statements": 80,
+    "branches": 80,
+    "functions": 80,
+    "lines": 80
+  }
+}

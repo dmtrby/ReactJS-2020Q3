@@ -9,7 +9,7 @@ import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
 import EditMovieContainer from '../EditMovieComponent';
 import RemoveMovieContainer from '../RemoveMovieComponent';
-import getRandomString from '../../Utils';
+import { getRandomString } from '../../Utils';
 
 import './movie-card.scss';
 

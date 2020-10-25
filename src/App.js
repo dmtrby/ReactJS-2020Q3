@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import HeaderSectionContainer from './Components/HeaderSection';
 import FooterSection from './Components/FooterSection';

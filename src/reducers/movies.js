@@ -19,7 +19,6 @@ const movies = (state = initialMoviesState, action) => {
         movies: [],
       };
     case 'FETCH_MOVIES_SUCCESS':
-
       return {
         ...state,
         isLoading: false,
@@ -63,4 +62,4 @@ const movies = (state = initialMoviesState, action) => {
   }
 };
 
-export default movies;
+export { movies, initialMoviesState };
