@@ -106,6 +106,7 @@ exports[`MoviesContainer should matches the Snapshot 1`] = `
                 <a
                   href="/film/1"
                   onClick={[Function]}
+                  onMouseEnter={[Function]}
                 >
                   <img
                     alt=""
@@ -240,6 +241,7 @@ exports[`MoviesContainer should matches the Snapshot 1`] = `
                 <a
                   href="/film/2"
                   onClick={[Function]}
+                  onMouseEnter={[Function]}
                 >
                   <img
                     alt=""
@@ -374,6 +376,7 @@ exports[`MoviesContainer should matches the Snapshot 1`] = `
                 <a
                   href="/film/3"
                   onClick={[Function]}
+                  onMouseEnter={[Function]}
                 >
                   <img
                     alt=""

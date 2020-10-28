@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { fetchMovie } from '../../actions';
 import DetailsPageHeader from './DetailsPageHeader';
 import DisplayPageStatus from '../DisplayPageStatus';
 
-const DetailsPageHeaderContainer = ({ fetchMovieFromServer, detailedMovieLoading, detailedMovie, id }) => {
-  useEffect(() => {
-    fetchMovieFromServer(id);
-  }, [id]);
 
-  if ((detailedMovieLoading && !detailedMovie) || !detailedMovie ) {
+
+const DetailsPageHeaderContainer = () => {
+  const { detailedMovie, detailedMovieLoading } = useSelector((state) => state);
+
+  if ((detailedMovieLoading && !detailedMovie) || !detailedMovie) {
     return <DisplayPageStatus>Loading...</DisplayPageStatus>;
-  } else if (detailedMovie === 404) {
-    return <Redirect to="/404" />;
   } else {
-    return <DetailsPageHeader {...detailedMovie} />
+    return <DetailsPageHeader {...detailedMovie} />;
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    detailedMovie: state.movies.detailedMovie,
-    detailedMovieLoading: state.movies.detailedMovieLoading,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchMovieFromServer: (id) => dispatch(fetchMovie(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailsPageHeaderContainer);
+export default DetailsPageHeaderContainer;

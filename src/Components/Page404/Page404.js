@@ -1,6 +1,5 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import Logotype from '../Logotype';
 import FooterSection from '../FooterSection';
@@ -25,8 +24,8 @@ const Page404 = () => (
         </div>
         <div className="error-page__404 col-xs-12 col-lg-10 col-lg-offset-1">404</div>
         <div className="error-page__button col-xs-12 col-lg-10 col-lg-offset-1">
-          <Link className="button button--inherit" to="/">Go back home
-           
+          <Link href="/">
+            <a className="button button--inherit">Go back home</a>
           </Link>
         </div>
       </div>

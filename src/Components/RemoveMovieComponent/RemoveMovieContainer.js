@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RemoveMovieComponent from './RemoveMovieComponent';
-import { deleteMovie } from '../../actions';
+import { deleteMovie } from '../../redux/actions';
 
 const mapDispatchToProps = (dispatch) => ({
   deleteMovieHandler: (id) => {

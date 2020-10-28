@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import Logotype from '../Logotype';
 import Heading from '../Base/Heading';
@@ -25,8 +25,10 @@ const DetailsPageHeader = ({ title, release_date, poster_path, genres, vote_aver
           <span className="header__logo">
             <Logotype />
           </span>
-          <Link to="/" className="modal__close-button button button--text">
-            <IconComponent xlinkHref="#icons-sprite_search" color="primary" />
+          <Link href="/" as="/" className="modal__close-button button button--text">
+            <a>
+              <IconComponent xlinkHref="#search" color="primary" />
+            </a>
           </Link>
         </div>
       </div>

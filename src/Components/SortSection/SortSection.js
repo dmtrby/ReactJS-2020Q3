@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Listbox, ListboxOption } from '@reach/listbox';
-import { useHistory } from 'react-router-dom';
-import queryString from 'query-string';
-import { makeUrl } from '../../Utils';
+import { useRouter } from 'next/router';
 
 import IconComponent from '../Base/IconComponent';
 
@@ -11,24 +9,27 @@ import './sort-section.scss';
 
 const SortSection = ({ sortSectionData, setSortBy }) => {
   const [sortValue, setSortValue] = useState('title');
-  const history = useHistory();
+  const router = useRouter();
+  const {
+    query: { sortBy },
+  } = router;
 
   useEffect(() => {
-    const values = queryString.parse(history.location.search);
-    if (values.sortBy) {
-      setSortValue(values.sortBy);
-      setSortBy(values.sortBy);
+    if (sortBy) {
+      setSortValue(sortBy);
+      setSortBy(sortBy);
     }
   }, []);
 
   const changeSortHandler = (newSort) => {
-    const queryValues = queryString.parse(history.location.search);
+    delete router.query.id;
     setSortValue(newSort);
     setSortBy(newSort);
-    const { pathname } = history.location;
-    const url = makeUrl(queryValues, 'sortBy', newSort);
-    history.push(pathname + url);
-  }
+    router.push({
+      pathname: '/movies/search',
+      query: { ...router.query, sortBy: newSort },
+    });
+  };
 
   return (
     <div className="container">
@@ -38,7 +39,7 @@ const SortSection = ({ sortSectionData, setSortBy }) => {
           defaultValue={'title'}
           value={sortValue}
           className="sort-section__dropdown margin-left-2"
-          arrow={<IconComponent xlinkHref="#icons-sprite_down-arrow" color="primary" />}
+          arrow={<IconComponent xlinkHref="#down-arrow" color="primary" />}
           onChange={changeSortHandler}
         >
           {sortSectionData.map((item) => (
