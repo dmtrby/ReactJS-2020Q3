@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { initialMoviesState } from '../../reducers/movies';
+import { initialMoviesState } from '../../redux/reducers/movies';
 
 const middleWares = [thunk];
 const mockStore = configureMockStore(middleWares);

@@ -12,7 +12,7 @@ const AddMovieComponent = ({ addMovieRequest }) => {
   return (
     <>
       <Button variant="with-icon" onClick={() => setModal(!show)}>
-        <IconComponent xlinkHref="#icons-sprite_plus" size="small" color="primary" classList="margin-right-1" />
+        <IconComponent xlinkHref="#plus" size="small" color="primary" classList="margin-right-1" />
         add movie
       </Button>
       <ModalWindow isOpen={show} handleHide={() => setModal(!show)}>

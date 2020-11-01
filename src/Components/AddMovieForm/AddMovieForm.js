@@ -7,8 +7,6 @@ import Input from '../Base/Input';
 import Button from '../Base/Button';
 import Select from '../Base/Select';
 
-import './movie-form.scss';
-
 const ValidateMovieSchema = Yup.object().shape({
   title: Yup.string()
     .min(2, 'Should be more than 2 symbols')

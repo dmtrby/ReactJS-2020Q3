@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import GenreSelector from './GengreSelector';
-import { setFilter, fetchMovies } from '../../actions';
+import { setFilter, fetchMovies } from '../../redux/actions';
 
 const genresData = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
 

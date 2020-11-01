@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GenreSelectorContainer from '../GenreSelector';
-import MoviesSectionContainer from '../MoviesSection';
+import MoviesSection from '../MoviesSection';
 import SortSectionContainer from '../SortSection';
 import DisplayPageStatus from '../DisplayPageStatus';
 
@@ -17,7 +17,7 @@ const Main = ({ isEmpty }) => (
         </div>
       </div>
     </div>
-    {isEmpty ? <DisplayPageStatus>Use search tool to get movies</DisplayPageStatus> : <MoviesSectionContainer />}
+    {isEmpty ? <DisplayPageStatus>Use search tool to get movies</DisplayPageStatus> : <MoviesSection />}
   </main>
 );
 

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import queryString from 'query-string';
-import { connect } from 'react-redux';
+import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { setSearch } from '../../actions';
-import { makeUrl } from '../../Utils';
+import { setSearch } from '../../redux/actions';
 
 import Logotype from '../Logotype';
 import Input from '../Base/Input';
@@ -12,31 +10,48 @@ import Button from '../Base/Button';
 import Heading from '../Base/Heading';
 import AddMovieContainer from '../AddMovieComponent';
 
-const MainPageHeader = ({ search, setSearchBy }) => {
-  const [searchValue, setSearchValue] = useState(search);
-  const history = useHistory();
+const MainPageHeader = () => {
+  const dispatch = useDispatch();
+  const { search: searchFromStore } = useSelector((state) => state);
+
+  const [searchValue, setSearchValue] = useState(searchFromStore);
+  const router = useRouter();
+  const {
+    query: { search },
+  } = router;
   useEffect(() => {
-    const values = queryString.parse(history.location.search);
-    if (values.search) {
-      setSearchBy(values.search);
-      setSearchValue(values.search);
+    if (search) {
+      dispatch(setSearch(search));
+      setSearchValue(search);
+    } else {
+      dispatch(setSearch(''));
+      setSearchValue('');
     }
   }, []);
 
+  const redirect = (value) => {
+    if (value) {
+      router.push({
+        pathname: '/movies/search',
+        query: { ...router.query, search: value },
+      });
+    } else {
+      const { search, ...queryToSet } = router.query;
+      router.push({
+        pathname: '/movies/search',
+        query: { ...queryToSet },
+      });
+    }
+  };
+
   const handleChange = (newValue) => {
     setSearchValue(newValue);
-    setSearchBy(newValue);
-    const queryValues = queryString.parse(history.location.search);
-    const url = makeUrl(queryValues, 'search', newValue);
-    history.push('/movies/search' + url);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const queryValues = queryString.parse(history.location.search);
-    const url = makeUrl(queryValues, 'search', searchValue);
-    setSearchBy(searchValue);
-    history.push('/movies/search' + url);
+    dispatch(setSearch(searchValue));
+    redirect(searchValue);
   };
 
   return (
@@ -83,14 +98,4 @@ const MainPageHeader = ({ search, setSearchBy }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  setSearchBy: (newSearchBy) => {
-    dispatch(setSearch(newSearchBy));
-  },
-});
-
-const mapStateToProps = (state) => ({
-  search: state.movies.search,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPageHeader);
+export default MainPageHeader;

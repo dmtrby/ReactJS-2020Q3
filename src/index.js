@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import ErrorBoundary from './Components/ErrorBoundary';
 
-import rootReducer from './reducers';
+import rootReducer from './redux/reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

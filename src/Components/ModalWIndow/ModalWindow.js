@@ -12,7 +12,7 @@ const ModalWindow = ({ children, isOpen, handleHide }) => (
     <DialogContent className="modal" aria-label="modal window">
       <div className="row end-xs">
         <Button variant="text" onClick={handleHide} classList="modal__close-button">
-          <IconComponent xlinkHref="#icons-sprite_unchecked" color="light" />
+          <IconComponent xlinkHref="#unchecked" color="light" />
         </Button>
       </div>
       <div className="modal__content">{children}</div>

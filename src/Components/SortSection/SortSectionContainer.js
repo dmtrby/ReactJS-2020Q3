@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SortSection from './SortSection';
-import { fetchMovies, setSort } from '../../actions';
+import { fetchMovies, setSort } from '../../redux/actions';
 
 const mockedSortSectionData = [
   {

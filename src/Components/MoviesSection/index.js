@@ -1,3 +1,3 @@
-import MoviesSectionContainer from './MoviesSectionContainer';
+import MoviesSection from './MoviesSection';
 
-export default MoviesSectionContainer;
+export default MoviesSection;

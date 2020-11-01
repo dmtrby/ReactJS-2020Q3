@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import queryString from 'query-string';
-
-import { makeUrl } from '../../Utils';
+import { useRouter } from 'next/router';
 
 import Button from '../Base/Button';
 
@@ -11,25 +8,27 @@ import './genre-selector.scss';
 
 const GenreSelector = ({ genresData, setFilterFunction }) => {
   const [filterValue, setFilterValue] = useState('All');
-  const history = useHistory();
+  const router = useRouter();
+  const {
+    query: { filter },
+  } = router;
 
   useEffect(() => {
-    const values = queryString.parse(history.location.search);
-    if (values.filter) {
-      setFilterValue(values.filter);
-      setFilterFunction(values.filter);
+    if (filter) {
+      setFilterValue(filter);
+      setFilterFunction(filter);
     }
   }, []);
 
   const changeFilterHandler = (newFilter) => {
-    const queryValues = queryString.parse(history.location.search);
-    console.log(queryValues);
-    setFilterValue(newFilter);
-    setFilterFunction(newFilter);
-    const { pathname } = history.location;
-    const url = makeUrl(queryValues, 'filter', newFilter);
-    history.push(pathname + url);
-  }
+      delete router.query.id;
+      setFilterValue(newFilter);
+      setFilterFunction(newFilter);
+      router.push({
+        pathname: '/movies/search',
+        query: { ...router.query, filter: newFilter },
+      });
+  };
 
   return (
     <nav className="genre-selector">
@@ -47,7 +46,7 @@ const GenreSelector = ({ genresData, setFilterFunction }) => {
       </ul>
     </nav>
   );
-} 
+};
 
 GenreSelector.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types

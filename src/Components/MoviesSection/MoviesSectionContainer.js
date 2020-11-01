@@ -1,11 +1,9 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
-import queryString from 'query-string';
 
-import { connect, compose } from 'react-redux';
+import { connect} from 'react-redux';
 import MoviesSection from './MoviesSection';
-import { fetchMovies } from '../../actions';
+import { fetchMovies } from '../../redux/actions';
 
 const MoviesSectionContainer = ({ fetchMoviesFromServer, filter, sortBy, search, ...state }) => {
   useEffect(() => {
@@ -27,6 +25,11 @@ const mapStateToProps = (state) => ({
   isLoading: state.movies.isLoading,
   error: state.movies.error,
 });
+
+MoviesSectionContainer.getInitialProps = async ({ query, req }) => {
+  await fetchMovies('Horror', 'title', 'd');
+  return {};
+}
 
 MoviesSectionContainer.propTypes = {
   fetchMoviesFromServer: PropTypes.func.isRequired,

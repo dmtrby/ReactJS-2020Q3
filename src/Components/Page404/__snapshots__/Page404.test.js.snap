@@ -51,6 +51,7 @@ exports[`404 Page matches the Snapshot 1`] = `
           className="button button--inherit"
           href="/"
           onClick={[Function]}
+          onMouseEnter={[Function]}
         >
           Go back home
         </a>

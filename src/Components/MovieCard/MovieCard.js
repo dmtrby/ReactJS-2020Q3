@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, MenuList, MenuButton } from '@reach/menu-button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import Heading from '../Base/Heading';
 import IconComponent from '../Base/IconComponent';
@@ -28,7 +28,7 @@ const MovieCard = ({ ...movie }) => {
     <article className="movie-card">
       <Menu>
         <MenuButton className="button button--text movie-card__menu">
-          <IconComponent xlinkHref="#icons-sprite_more" color="light" />
+          <IconComponent xlinkHref="#more" color="light" />
         </MenuButton>
         <MenuList portal={false}>
           <EditMovieContainer movie={movie} />
@@ -38,8 +38,10 @@ const MovieCard = ({ ...movie }) => {
 
       <div className="row">
         <div className="col-xs-12">
-          <Link to={`/film/${id}`}>
-            <img src={poster_path} alt="" className="movie-card__img" />
+          <Link href="/film/[id]" as={`/film/${id}`}>
+            <a>
+              <img src={poster_path} alt="" className="movie-card__img" />
+            </a>
           </Link>
         </div>
         <div className="col-xs-12 padding-bottom-0 padding-top-0">
@@ -57,7 +59,7 @@ const MovieCard = ({ ...movie }) => {
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
-  poster_path: PropTypes.string.isRequired,
+  poster_path: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
